@@ -37,6 +37,7 @@ export class SearchComponent implements OnInit {
     Depart: ['Paris', [Validators.required]],
     Destination: ['Lyon', [Validators.required ]],
     dateFrom:[new Date(),[Validators.required ]],
+    toDate:[new Date(),[Validators.required ]],
     Adult: [1,],
     Children: [0,],
     Bikes: [0,],
