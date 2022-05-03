@@ -101,13 +101,13 @@
                       <div class="_2bvVl">
                         <div class="smhc-control"><label
                           class="smhc-label smhc-input__label _2SYcx _2d7OV"><span> Départ :</span></label>
-                          <div class="smhc-input hWzho _3XtvC"><input
+                          <div class="smhc-input hWzho _3XtvC "><input
                             name="CalenDepart"
                             type="text"
                             id="CalenDepart"
                             class="smhc-input__field hWzho "
                             formControlName="dateFrom"
-
+                            [min]="minDate" [max]="maxDate"
                             readonly (click)="picker1.open()" (focus)="picker1.open()"   [matDatepicker]="picker1"
                             style="margin-left: -4px; padding-left:40px "/>
 
@@ -130,6 +130,7 @@
                             type="text"
                             id="CalenRetour"
                             class="smhc-input__field hWzho"
+
                             readonly (click)="picker2.open()" (focus)="picker2.open()"   [matDatepicker]="picker2"
                             style="margin-left: -4px"/>
                           <div role="presentation" class="_1ENCB"><i

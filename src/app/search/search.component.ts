@@ -30,12 +30,13 @@ export class SearchComponent implements OnInit {
   listcities: Array<Cities>=[];
   lists: any[]=[];
 
-
+  minDate: Date;
+  maxDate: Date;
   formGroup = this.fb.group({
       // tslint:disable-next-line:max-line-length
     Depart: ['Paris', [Validators.required]],
     Destination: ['Lyon', [Validators.required ]],
-    dateFrom:[Date.now(),[Validators.required ]],
+    dateFrom:[new Date(),[Validators.required ]],
     Adult: [1,],
     Children: [0,],
     Bikes: [0,],
@@ -48,7 +49,9 @@ export class SearchComponent implements OnInit {
 
   constructor(private fb: FormBuilder,  private searchService: SearchService,) {
 
-
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 20, 0, 1);
+    this.maxDate = new Date(currentYear + 1, 11, 31);
   }
 
 
@@ -258,8 +261,26 @@ return matches;
 
  }
   async onSubmit() {
+  console.log(this.formGroup.get('dateFrom')?.value);
     let citiefrom: Cities[] = [];
     let DestinationCities: Cities[] = [];
+    let date;
+    let dateValue;
+    console.log("*************************************************************************");
+    // @ts-ignore
+    date= this.formGroup.get('dateFrom').value;
+    date.day;
+    console.log(date.getMonth()+1);
+
+    let month="x" ;
+    if((date.getMonth()+1)<10)
+    { month="0"+(date.getMonth()+1);
+
+    }
+    else
+      month=(date.getMonth()+1)
+    dateValue= date.getDate()+'.'+month+'.'+date.getFullYear()
+    console.log(dateValue);
     let object: {
       search_by: string; from: number; to: number;
       departure_date: Date; adult: number; children: number; bikes: number
@@ -275,7 +296,7 @@ return matches;
     console.log("to" + this.getId(this.lists, this.formGroup.get('Destination')?.value));
 
   //  console.log(this.searchService.SearchTrip(this.getId(this.lists, this.formGroup.get('Depart')?.value), this.getId(this.lists, this.formGroup.get('Destination')?.value)));
-    let test = this.searchService.SearchTrip(this.getId(this.lists, this.formGroup.get('Depart')?.value), this.getId(this.lists, this.formGroup.get('Destination')?.value), this.formGroup.get('Adult')?.value).subscribe
+    let test = this.searchService.SearchTrip(this.getId(this.lists, this.formGroup.get('Depart')?.value), this.getId(this.lists, this.formGroup.get('Destination')?.value), this.formGroup.get('Adult')?.value,dateValue,this.formGroup.get('Bikes')?.value,this.formGroup.get('Children')?.value).subscribe
     (
       (data) => {
         console.log("done");
