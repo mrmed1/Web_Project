@@ -1,6 +1,6 @@
 <div class="example-container" >
-
-  <div [hidden]="flixbusService.isShow">
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#1a67a1" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+  <div [hidden]="isShow">
   <mat-toolbar class="example-toolbar">
     <span><h1>Confirmez-vous le paiement ? </h1></span>
     <span class="fill-remaining-space"></span>
@@ -80,7 +80,7 @@
     </div>
 </div>
   </div>
-    <div [hidden]="flixbusService.show">
+    <div [hidden]="show">
       <mat-toolbar class="example-toolbar">
 
         <button class="btn-dialog-close btnClose" style="margin-left: auto" mat-button color="warn" (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
@@ -115,7 +115,6 @@
               id="retourButton">Retour
       </button>
     </div>
-
 
 
 

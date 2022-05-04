@@ -5,6 +5,7 @@ import {stringify} from "@angular/compiler/src/util";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ModalPaiementComponent} from "../modal-paiement/modal-paiement.component";
+import {NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-checkout',
@@ -39,7 +40,8 @@ export class CheckoutComponent implements OnInit {
   items: FormArray | undefined;
   constructor(public flixbusService:FlixbusService,
               private fb:FormBuilder,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private spinner: NgxSpinnerService) { }
 
 
 
@@ -62,15 +64,16 @@ export class CheckoutComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     /*this.formGroup = this.fb.group({
 
       items: this.fb.array([this.createItem()]),
 
     });*/
-    localStorage.setItem("uid","direct:168187003:1:10")
+    localStorage.setItem("uid","direct:169396943:1:10")
     localStorage.setItem("adult", "1")
     localStorage.setItem("children", "1")
-    localStorage.setItem("bikes", "1")
+    localStorage.setItem("bikes", "0")
     this.flixbusService.authenticate();
 
     this.flixbusService.createReservation(String(localStorage.getItem("uid")),this.num(localStorage.getItem("children")),0,this.num(localStorage.getItem("adult")));
@@ -111,6 +114,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinner.show();
     let i;
     let x = [];
 
@@ -141,8 +145,9 @@ export class CheckoutComponent implements OnInit {
       //this.flixbusService.addpassengertoreservation(x);
     this.flixbusService.addpassengertoreservation(x).subscribe(
         (data:any) => {
-          console.log(data.body),
-            localStorage.setItem("email",document.getElementById("email")["value"])
+          console.log(data.body);
+            localStorage.setItem("email",document.getElementById("email")["value"]);
+            this.spinner.hide();
             this.openDialog();
         },
         error => console.log(error)

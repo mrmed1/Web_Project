@@ -17,8 +17,7 @@ export class FlixbusService {
   arrivalTime: number | undefined;
   total = 0;
   token: string
-  show: boolean = true;
-  isShow: boolean = false;
+
   constructor(private http: HttpClient) {
     this.urlv1 = "https://global.api-dev.flixbus.com/public/v1";
     this.urlv2 = "https://global.api-dev.flixbus.com/public/v2";
@@ -243,14 +242,6 @@ export class FlixbusService {
         .set('Access-Control-Allow-Origin', '*')
         .set('X-API-Session', String(this.token))
         .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
-    }).subscribe(
-      (value:any) => {
-        this.isShow = true;
-        this.show = false;
-        localStorage.setItem("invoice_link",value["order"]["invoice_link"])
-        localStorage.setItem("reminder_link",value["order"]["reminder_link"])
-
-      }
-    )
+    })
   }
 }
