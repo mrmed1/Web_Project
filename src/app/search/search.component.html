@@ -101,13 +101,13 @@
                       <div class="_2bvVl">
                         <div class="smhc-control"><label
                           class="smhc-label smhc-input__label _2SYcx _2d7OV"><span> Départ :</span></label>
-                          <div class="smhc-input hWzho _3XtvC"><input
+                          <div class="smhc-input hWzho _3XtvC "><input
                             name="CalenDepart"
                             type="text"
                             id="CalenDepart"
                             class="smhc-input__field hWzho "
                             formControlName="dateFrom"
-
+                            [min]="minDate" [max]="maxDate"
                             readonly (click)="picker1.open()" (focus)="picker1.open()"   [matDatepicker]="picker1"
                             style="margin-left: -4px; padding-left:40px "/>
 
@@ -130,6 +130,7 @@
                             type="text"
                             id="CalenRetour"
                             class="smhc-input__field hWzho"
+                            formControlName="toDate"
                             readonly (click)="picker2.open()" (focus)="picker2.open()"   [matDatepicker]="picker2"
                             style="margin-left: -4px"/>
                           <div role="presentation" class="_1ENCB"><i
@@ -191,16 +192,29 @@
                           <input class="smhc-input__field"
                                  id="passagersvelo"
                                  readonly
-                                 placeholder="Veuillez ajouter des passagers..."
+                                 *ngIf="Children?.value===0"
                                  aria-label="Options"
                                  class="flix-btn flix-btn--has-icon flix-btn--square flix-btn--link flix-space-xs-top"
                                  data-toggle="js-flix-dropdown--left"
                                  data-toggle-class="flix-dropdown--active"
                                  aria-controls="kebab-dropdown-menu"
 
-                                 value=""
+                                 value="{{Adult?.value}} Adulte , {{Bikes?.value}} Velo "
                                  (click)="affichecarte()"
                                 >
+                          <input class="smhc-input__field"
+                                 id="passagersvelo"
+                                 readonly
+                                 *ngIf="Children?.value>0"
+                                 aria-label="Options"
+                                 class="flix-btn flix-btn--has-icon flix-btn--square flix-btn--link flix-space-xs-top"
+                                 data-toggle="js-flix-dropdown--left"
+                                 data-toggle-class="flix-dropdown--active"
+                                 aria-controls="kebab-dropdown-menu"
+
+                                 value="{{Adult?.value}} Adulte  , {{Children?.value}} Enfants {{Bikes?.value}} Velo "
+                                 (click)="affichecarte()"
+                          >
                           <div>
                             <ul id="kebab-dropdown-menu" class="flix-dropdown__items"
                                 style="min-width: 360px; min-height: 250px;{{hidden}}">
