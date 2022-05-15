@@ -192,16 +192,29 @@
                           <input class="smhc-input__field"
                                  id="passagersvelo"
                                  readonly
-                                 placeholder="Veuillez ajouter des passagers..."
+                                 *ngIf="Children?.value===0"
                                  aria-label="Options"
                                  class="flix-btn flix-btn--has-icon flix-btn--square flix-btn--link flix-space-xs-top"
                                  data-toggle="js-flix-dropdown--left"
                                  data-toggle-class="flix-dropdown--active"
                                  aria-controls="kebab-dropdown-menu"
 
-                                 value=""
+                                 value="{{Adult?.value}} Adulte , {{Bikes?.value}} Velo "
                                  (click)="affichecarte()"
                                 >
+                          <input class="smhc-input__field"
+                                 id="passagersvelo"
+                                 readonly
+                                 *ngIf="Children?.value>0"
+                                 aria-label="Options"
+                                 class="flix-btn flix-btn--has-icon flix-btn--square flix-btn--link flix-space-xs-top"
+                                 data-toggle="js-flix-dropdown--left"
+                                 data-toggle-class="flix-dropdown--active"
+                                 aria-controls="kebab-dropdown-menu"
+
+                                 value="{{Adult?.value}} Adulte  , {{Children?.value}} Enfants {{Bikes?.value}} Velo "
+                                 (click)="affichecarte()"
+                          >
                           <div>
                             <ul id="kebab-dropdown-menu" class="flix-dropdown__items"
                                 style="min-width: 360px; min-height: 250px;{{hidden}}">
