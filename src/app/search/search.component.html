@@ -1,0 +1,357 @@
+<form method="post" id="myForm" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+
+  <div class="col-xl-12 flix-box" style="max-width: none">
+    <div class="card mb-4">
+      <div class="card-header">Bus</div>
+      <div class="card-body" style="margin-left: 15px">
+        <div id="search-mask">
+          <div id="search-mask-component" style="border-radius:5px">
+            <div class="smhc-theme-default">
+              <div class="mz6eh col-xl-12">
+
+                <div class="_1ueVz">
+                  <div class="_3lBq9 smhc-radio" data-e2e="one-way-radio-button"><input
+                    id="search-mask-trip-mode-oneway-toggle" type="radio"
+                    class="smhc-radio__input" checked="" name="radiotype"
+                    value="Aller-simple" (change)="setType(1)"><label class="smhc-radio__label"
+                                                for="search-mask-trip-mode-oneway-toggle">Aller simple
+                  </label>
+                  </div>
+                  <div class="_3lBq9 smhc-radio" data-e2e="round-trip-radio-button"><input
+                    id="search-mask-trip-mode-roundtrip-toggle" type="radio"
+                    name="radiotype"
+                    class="smhc-radio__input" value="Aller-retour" (change)="setType(2)"><label
+                    class="smhc-radio__label"
+                    for="search-mask-trip-mode-roundtrip-toggle" >Aller-retour</label>
+                  </div>
+                </div>
+                <div class="_2WFAL" >
+                  <div class="_3fBZP">
+                    <div class="_1slnN" data-e2e="departure-city-input-field">
+                      <div class="_2bvVl">
+                        <div class="smhc-control"><label
+                          class="smhc-label smhc-input__label _2SYcx _2d7OV"><span> de :</span></label>
+                          <div class="smhc-input hWzho _3XtvC"><input
+
+                            (click)="clearDepart()"
+                            (focusout)="setDepart()"
+                            (keyup)="searchOnKeyUp($event)"  [matAutocomplete]="auto"
+                            class="form-control smhc-input__field "
+                            formControlName="Depart"
+                            id="Depart"
+
+
+                            name="depart"
+                            placeholder="Paris" spellcheck="false" tabindex="0" >
+
+                            <div role="presentation" class="_1ENCB"><i
+                              class="_1k7Pt flix-icon flix-icon-pin-solid"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="button" class="_3dr60 _2puHn paWO9"
+                              (click)="switchText()">
+                        <i class="flix-btn__icon flix-icon flix-icon-switch-vertical"
+                        ></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="_1ESlq" data-e2e="arrival-city-input-field">
+                    <div class="_2bvVl">
+                      <div class="smhc-control"><label
+                        class="smhc-label smhc-input__label _2SYcx _2d7OV"><span>a :</span></label>
+                        <div class="smhc-input hWzho _3XtvC"><input
+
+                          class="form-control smhc-input__field "
+                          formControlName="Destination"
+                          (click)="clearDestination()"
+                          (focusout)="setDestination()"
+
+
+                          (focus)="loadrs()"  (keyup)="searchOnKeyUp($event)"  [matAutocomplete]="auto"
+                          id="Destination"
+                          name="inputTo"
+                          placeholder="Lyon"
+                          tabindex="0"
+                          autocomplete="random-string"
+                          autocorrect="off"
+                          spellcheck="false"
+                          >
+                          <div role="presentation" class="_1ENCB"><i
+                            class="_1k7Pt flix-icon flix-icon-pin-solid"></i>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let c of results" [value]="c.name">
+                    {{c.name}}
+                  </mat-option>
+                </mat-autocomplete>
+
+
+
+                <div class="_3pecu vjsUt " >
+                  <div [ngClass]=calsscalendar>
+                    <div class="_1slnN" data-e2e="departure-city-input-field">
+                      <div class="_2bvVl">
+                        <div class="smhc-control"><label
+                          class="smhc-label smhc-input__label _2SYcx _2d7OV"><span> Départ :</span></label>
+                          <div class="smhc-input hWzho _3XtvC"><input
+                            name="CalenDepart"
+                            type="text"
+                            id="CalenDepart"
+                            class="smhc-input__field hWzho "
+                            formControlName="dateFrom"
+
+                            readonly (click)="picker1.open()" (focus)="picker1.open()"   [matDatepicker]="picker1"
+                            style="margin-left: -4px; padding-left:40px "/>
+
+                            <div role="presentation" class="_1ENCB"><i
+                              class="_1k7Pt flix-icon flix-icon-calendar-solid"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="_1ESlq calendarsmall" data-e2e="arrival-city-input-field"  style="{{displayC2}}">
+                    <div class="_2bvVl">
+                      <div class="smhc-control"><label
+                        class="smhc-label smhc-input__label _2SYcx _2d7OV"><span>Retour:</span></label>
+                        <div class="smhc-input hWzho _3XtvC">
+                          <input
+                            name="CalenRetour"
+                            type="text"
+                            id="CalenRetour"
+                            class="smhc-input__field hWzho"
+                            readonly (click)="picker2.open()" (focus)="picker2.open()"   [matDatepicker]="picker2"
+                            style="margin-left: -4px"/>
+                          <div role="presentation" class="_1ENCB"><i
+                            class="_1k7Pt flix-icon flix-icon-calendar-solid"></i>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+                <!--
+                              <div class="_2WFAL" style="display: flex;    width: 25%;">
+                                <div class="smhc-input hWzho _3fBZP">
+                                  <label class="flix-label flix-input__label">
+                test
+                                </label>
+                                  <input
+                                    name="CalenDepart"
+                                    type="text"
+                                    id="CalenDepart"
+                                    class="smhc-input__field hWzho "
+
+                                    style="margin-left: -4px; padding-left:40px "/>
+                                  <div role="presentation" class="_1ENCB"><i
+                                    class="_1k7Pt flix-icon flix-icon-calendar-solid"
+                                    ></i></div>
+
+                                </div>
+                                <div class="smhc-input hWzho _3fBZP" id="displayretour"
+                                     style="display: none;width: 220px !important;"> test<label
+                                  class="flix-label flix-input__label" >
+
+                                </label>
+                                  <input
+                                    name="CalenRetour"
+                                    type="text"
+                                    id="CalenRetour"
+                                    class="smhc-input__field hWzho"
+
+                                    style="margin-left: -4px"/>
+                                </div>
+                              </div>
+
+                               -->
+
+                <div data-e2e="products-input-field" class="_2sebG _2yYEF">
+                  <div class="_3ECRE">
+                    <div class="_1BI_i">
+                      <div class="smhc-control"><label
+                        class="smhc-label smhc-input__label _2SYcx _2d7OV"><span><label
+                        class="smhc-label smhc-input__label _2SYcx"><span>Passagers/Vélos </span></label></span></label>
+
+                        <div class="smhc-input hWzho _3XtvC _1sS9N flix-dropdown flix-dropdown--left flix-dropdown--active js-flix-dropdown--left">
+                          <input class="smhc-input__field"
+                                 id="passagersvelo"
+                                 readonly
+                                 placeholder="Veuillez ajouter des passagers..."
+                                 aria-label="Options"
+                                 class="flix-btn flix-btn--has-icon flix-btn--square flix-btn--link flix-space-xs-top"
+                                 data-toggle="js-flix-dropdown--left"
+                                 data-toggle-class="flix-dropdown--active"
+                                 aria-controls="kebab-dropdown-menu"
+
+                                 value=""
+                                 (click)="affichecarte()"
+                                >
+                          <div>
+                            <ul id="kebab-dropdown-menu" class="flix-dropdown__items"
+                                style="min-width: 360px; min-height: 250px;{{hidden}}">
+                              <div class="flix-quantity" style="display: flex;">
+                                <div class="_3OTlx" style="margin-left: 5px;position: absolute;">
+                                  <div>
+                                    <span style="font-weight: bold;">Adultes</span>
+                                  </div>
+                                  <div><span>à partir de 16 ans</span></div>
+                                </div>
+
+                                <div class="flix-quantity__picker"
+                                     style="margin-left: 50%;">
+                                  <button type="button" id="moinsadulte"
+                                          class="flix-btn flix-btn--square flix-quantity__button"
+                                          style="height: auto;min-width: 50px"
+                                          aria-controls="quantity-simple"
+                                          title="Remove"
+                                          (click)=" Remove(1)">
+                                    <span class="flix-sr-only">Remove</span>
+                                  </button>
+                                  <input id="quantity-simple-adulte" type="number"
+                                         class="form-control input-card flix-quantity__input"
+                                         name="quantity-simple-adulte"
+                                         style="width: 45px;padding-left: 0px;padding-right: 0px"
+
+                                         min="1"
+                                         formControlName="Adult"
+
+                                  />
+                                  <button type="button" id="plusadulte"
+                                          class="flix-btn flix-btn--square flix-quantity__button"
+                                          style="height: auto;min-width: 50px"
+                                          aria-controls="quantity-simple"
+                                          title="Add" (click)="Add(1)">
+                                    <span class="flix-sr-only">Add</span>
+                                  </button>
+                                </div>
+                              </div>
+
+                              <hr>
+                              <div class="flix-quantity" style="display: flex;">
+                                <div class="_3OTlx" style="margin-left: 5px;position: absolute;">
+                                  <div>
+                                    <span style="font-weight: bold;">Enfants</span>
+                                  </div>
+                                  <div><span>de 0 à 15 ans</span></div>
+                                </div>
+
+                                <div class="flix-quantity__picker"
+                                     style="margin-left: 50%;">
+                                  <button type="button" id="moinsenfant"
+                                          class="flix-btn flix-btn--square flix-quantity__button"
+                                          style="height: auto;min-width: 50px"
+                                          aria-controls="quantity-simple"
+                                          title="Remove"
+                                          (click)=" Remove(2)">
+                                    <span class="flix-sr-only">Remove</span>
+                                  </button>
+                                  <input id="quantity-simple-enfant" type="number"
+                                         class="form-control flix-quantity__input"
+                                         name="quantity-simple-enfant"
+                                         style="width: 45px;padding-left: 0px;padding-right: 0px"
+                                         formControlName="Children"
+                                         min="0"
+                                         value="0"/>
+                                  <button type="button" id="plusenfant"
+                                          class="flix-btn flix-btn--square flix-quantity__button"
+                                          style="height: auto;min-width: 50px"
+                                          aria-controls="quantity-simple"
+                                          title="Add"
+                                          (click)="Add(2)">
+                                    <span class="flix-sr-only">Add</span>
+                                  </button>
+                                </div>
+                              </div>
+
+                              <hr>
+                              <div class="flix-quantity" style="display: flex;">
+                                <div class="_3OTlx" style="margin-left: 5px;position: absolute;">
+                                  <div>
+                                    <span style="font-weight: bold;">Vélos</span>
+                                  </div>
+                                  <div><span> Vélos </span>
+                                  </div>
+                                </div>
+
+                                <div class="flix-quantity__picker"
+                                     style="margin-left: 50%;">
+                                  <button type="button" id="moinsvelo"
+                                          class="flix-btn flix-btn--square flix-quantity__button"
+                                          style="height: 44px;margin-top: 22px;min-width: 50px"
+                                          aria-controls="quantity-simple"
+                                          title="Remove"
+                                  (click)=" Remove(3)">
+                                    <span class="flix-sr-only">Remove</span>
+                                  </button>
+                                  <input id="quantity-simple-velo" type="number"
+                                         class="form-control flix-quantity__input"
+                                         name="quantity-simple-velo"
+                                         style="width: 45px;padding-left: 0px;padding-right: 0px;margin-top: 19px;"
+                                         formControlName="Bikes"
+                                         value="0" min="0" />
+                                  <button type="button" id="plusvelo"
+                                          class="flix-btn flix-btn--square flix-quantity__button"
+                                          style="height: 44px;margin-top: 22px; min-width: 50px"
+                                          aria-controls="quantity-simple"
+                                          title="Add"
+                                          (click)="Add(3)">
+                                    <span class="flix-sr-only">Add</span>
+                                  </button>
+                                </div>
+                              </div>
+
+
+
+                            </ul>
+                          </div>
+
+                          <div role="presentation" class="_1ENCB"><i
+                            class="_1k7Pt _29kQ4 flix-icon flix-icon-arrow-down"
+                            onclick=""
+                          ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div data-e2e="search-button" class="_2zVMF  VIFUe">
+
+                  <button type="submit"
+                          class="smhc-btn smhc-btn&#45;&#45;primary smhc-btn&#45;&#45;block _20QUy"
+                          id="btnrecherche"> Chercher
+                  </button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</form>
+
+<mat-datepicker  #picker2> </mat-datepicker>
+
+<mat-datepicker  #picker1> </mat-datepicker>
