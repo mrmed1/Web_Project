@@ -64,18 +64,9 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-    /*this.formGroup = this.fb.group({
-
-      items: this.fb.array([this.createItem()]),
-
-    });*/
-    localStorage.setItem("uid","direct:169396943:1:10")
-    localStorage.setItem("adult", "1")
-    localStorage.setItem("children", "1")
-    localStorage.setItem("bikes", "0")
     this.flixbusService.authenticate();
 
-    this.flixbusService.createReservation(String(localStorage.getItem("uid")),this.num(localStorage.getItem("children")),0,this.num(localStorage.getItem("adult")));
+    this.flixbusService.createReservation(String(localStorage.getItem("uid")),this.num(localStorage.getItem("children")),this.num(localStorage.getItem("bikes")),this.num(localStorage.getItem("adult")));
 
     this.flixbusService.getancillary();
     console.log("passengers: ", this.flixbusService.tabpassenger)
