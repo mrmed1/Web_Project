@@ -1,0 +1,390 @@
+<body class="platform-shop" style="overflow: inherit;">
+
+<div>
+  <div>
+    <form class="flix-checkout-form" name="checkout"  >
+      <div class="flix-checkout-content">
+        <div class="flix-checkout-main">
+          <button class="flix-btn-arrow flix-btn-arrow--back" type="button">Retour</button>
+          <div class="flix-checkout-section">
+            <div class="flix-checkout-section-header">
+              <div class="flix-checkout-section-header_number">1</div>
+              <div class="flix-checkout-section-header_label"><h2 class="flix-h2">Passagers</h2>
+              </div>
+
+            </div>
+            <div class="flix-checkout-section-content">
+              <div class="flix-disability-section"></div>
+              <div *ngIf="num(localStorageItem('adult')) > 0 && num(localStorageItem('children')) > 0">
+                <div  *ngFor="let index of counter(num(localStorageItem('adult'))); let r = index"
+                      style="margin-top: 24px">
+                  <span class="flix-connection__title">{{r + 1}} Adulte</span>
+                  <div  class="flix-passengerdetails-fields" style="margin-top: 15px;">
+                    <div class="flix-passenger-input">
+                      <div class="flix-control">
+                        <div class="flix-input"><label
+                          class="flix-label flix-input__label">Prénom</label><input
+                          autocomplete="given-name" name="prenom{{r+1}}" id="prenom{{r+1}}" class="flix-input__field" value="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flix-passenger-input">
+                      <div class="flix-control">
+                        <div class="flix-input"><label
+                          class="flix-label flix-input__label">Nom</label><input
+                          autocomplete="family-name"
+                          class="flix-input__field " name="nom{{r+1}}" id="nom{{r+1}}"  value=""></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngFor="let index of counter(num(localStorageItem('children'))); let c = index"
+                     style="margin-top: 24px">
+                  <span class="flix-connection__title">{{c + 1 + num(localStorageItem('adult'))}} Enfant</span>
+
+                  <div class="flix-passengerdetails-fields" style="margin-top: 15px;">
+                    <div class="flix-passenger-input ">
+                      <div class="flix-control">
+                        <div class="flix-input"><label
+                          class="flix-label flix-input__label">Prénom</label><input
+                          autocomplete="given-name" name="prenom{{c+1+ num(localStorageItem('adult'))}}" id="prenom{{c+1+ num(localStorageItem('adult'))}}" class="flix-input__field" value="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flix-passenger-input ">
+                      <div class="flix-control">
+                        <div class="flix-input"><label
+                          class="flix-label flix-input__label">Nom</label><input
+                          autocomplete="family-name" name="nom{{c+1+ num(localStorageItem('adult'))}}" id="nom{{c+1+ num(localStorageItem('adult'))}}"
+                          class="flix-input__field " value=""></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flix-passenger-input  flix-passenger-input_birthdate">
+                    <div class="flix-control">
+                      <div class="flix-date-input flix-input" style="margin-left: -5px;">
+                        <label
+                          class="flix-label flix-input__label">Date de
+                          naissance</label>
+                        <input class="flix-input__field" (click)="picker.open()"  matInput [matDatepicker]="picker"
+                               name="datenaissance{{c+1+ num(localStorageItem('adult'))}}" id="datenaissance{{c+1+ num(localStorageItem('adult'))}}">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker #picker></mat-datepicker>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="num(localStorageItem('adult')) >= 1 && num(localStorageItem('children')) == 0">
+                <div *ngFor="let index of counter(num(localStorageItem('adult'))); let a = index"
+                     style="margin-top: 24px">
+                  <span class="flix-connection__title"> {{a + 1}} Adulte</span>
+                  <div class="flix-passengerdetails-fields" style="margin-top: 15px;">
+                    <div class="flix-passenger-input">
+                      <div class="flix-control">
+                        <div class="flix-input"><label
+                          class="flix-label flix-input__label">Prénom</label><input
+                          autocomplete="given-name" name="prenom{{a+1}}" id="prenom{{a+1}}" class="flix-input__field" value="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flix-passenger-input">
+                      <div class="flix-control">
+                        <div class="flix-input"><label
+                          class="flix-label flix-input__label">Nom</label><input
+                          autocomplete="family-name" name="nom{{a+1}}" id="nom{{a+1}}"
+                          class="flix-input__field " value=""></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="num(localStorageItem('adult')) == 0 && num(localStorageItem('children')) > 0">
+                <div *ngFor="let index of counter(num(localStorageItem('children'))); let f = index"
+                     style="margin-top: 24px">
+                  <span class="flix-connection__title">{{f + 1}} Enfant</span>
+                  <div class="flix-passengerdetails-fields" style="margin-top: 15px;">
+                    <div class="flix-passenger-input ">
+                      <div class="flix-control">
+                        <div class="flix-input"><label
+                          class="flix-label flix-input__label">Prénom</label><input
+                          autocomplete="given-name" name="prenom{{f+1}}" id="prenom{{f+1}}" class="flix-input__field" value="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flix-passenger-input ">
+                      <div class="flix-control">
+                        <div class="flix-input"><label
+                          class="flix-label flix-input__label">Nom</label><input
+                          autocomplete="family-name" name="nom{{f+1}}" id="nom{{f+1}}"
+                          class="flix-input__field " value=""></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flix-passenger-input  flix-passenger-input_birthdate">
+                    <div class="flix-control">
+                      <div class="flix-date-input flix-input" style="margin-left: -5px;">
+                        <label
+                          class="flix-label flix-input__label">Date de
+                          naissance</label>
+                        <input class="flix-input__field" name="datenaissance{{f+1}}" id="datenaissance{{f+1}}" (click)="picker.open()" matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker #picker></mat-datepicker>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div><p class="flix-text">Autorisation parentale</p>
+                    <div class="flix-text"><label
+                      class="flix-checkbox"><input
+                      class="flix-checkbox__input" type="checkbox">
+                      <div class="flix-checkbox__label">Ce(s) mineur(s) a (ont) la
+                        permission de ses (leurs) parents / son (leur) tuteur de
+                        voyager seul(s) avec FlixBus. L'entreprise FlixBus DACH GmbH
+                        et ses affiliés déclinent tout devoir de supervision sur
+                        le(s) mineur(s).
+                      </div>
+                    </label></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flix-checkout-section">
+            <div class="flix-checkout-section-header">
+              <div class="flix-checkout-section-header_number" style="padding: 0px">2</div>
+              <div class="flix-checkout-section-header_label"><h2 class="flix-h2">Options</h2></div>
+            </div>
+            <div class="flix-checkout-section-content">
+              <div class="col-xs-12">
+                <div class="row flex-row list-view">
+                  <div class="product-list-item  " data-gtm-vis-first-on-screen-172546_1590="12493"
+                       data-gtm-vis-has-fired-172546_1590="1"
+                       data-gtm-vis-recent-on-screen-172546_1590="12493"
+                       data-gtm-vis-total-visible-time-172546_1590="100" id="product-luggage_additional">
+                    <div class="product-list-item-wrapper clickable">
+                      <div (click)="changeState()" class="product-list-item-box web-mobile-view ">
+                        <div class="item-box-icon">
+                          <svg class="icon icon-luggage icon-large" style="fill: rgb(139, 139, 139);"
+                               viewBox="0 0 979 979" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M819.3 866.5A89 89 0 0 1 730.3 959.5H725.4V972A28 28 0 1 1 669.8 972V959.5H311.5V972A28 28 0 1 1 255.9 972V959.5H250.1A89 89 0 0 1 161.1 866.5L176.7 498 178.9 498A887 887 0 0 0 321.3 530.9V560.7A28 28 0 0 0 376.9 560.7V538.1C413.4 541.6 450.8 543.4 489.5 543.4S567 543.4 604.8 538.1V560.7A28 28 0 0 0 660.4 560.7V534A979.1 979.1 0 0 0 805.1 504.7H805.1ZM194.5 445L178 440.6 186 253.2A159.3 159.3 0 0 1 343.6 102.8H368.9A127.7 127.7 0 0 1 494.9 0 117 117 0 0 1 610.1 102.8H635.5A157.5 157.5 0 0 1 793.5 253.2L801.1 445 787.7 448.6A1125.9 1125.9 0 0 1 489.5 489.5 951.5 951.5 0 0 1 194.5 445ZM426.3 102.8H553.6A61 61 0 0 0 494.9 55.6 73.4 73.4 0 0 0 426.3 102.8ZM292.8 225.2A28 28 0 0 0 320.9 253.2H529.6V275A28 28 0 1 0 585.2 275V253.2H657.3A28 28 0 1 0 657.3 197.6H321.8A28 28 0 0 0 293.7 225.2Z"></path>
+                          </svg>
+                        </div>
+                        <div class="item-box-content"><h3 class="item-box-title">Bagage supplémentaire</h3>
+                          <div class="description">à partir de <span>3,99&nbsp;€</span></div>
+                        </div>
+
+                      </div>
+                      <div [@widthGrow]="state" [hidden]="hide" class="trip" id="additionnal_luggage">
+                        <div class="luggage-offers-list flix-box" style="position: relative">
+                          <div class="luggage-offer-item">
+                            <div class="luggage-offer-sub-container" style="display: flex">
+                              <div class="luggage-offer-icon">
+                                <i class="flix-icon flix-icon--lg flix-icon-luggage-group"> </i>
+                              </div>
+
+                              <div style="margin-left: 24px;display: flex;flex-direction: column;"><span
+                                style="font-weight: 700 !important">1 Bagage à main + 1 Bagage en soute par personne</span>
+                                <div class="luggage-offer-description">7 kg · 42×30×18 cm | 20
+                                  kg ·
+                                  80×50×30 cm
+                                </div>
+                              </div>
+
+                              <div class="luggage-offer-price"
+                                   style="margin-left: auto;order: 2;"><span
+                                class="badge-free"
+                                style="padding: 4px 6px !important;">Gratuit</span>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div class="luggage-offer-item" *ngIf="flixbusService.nbrluggage != 0">
+                            <div class="luggage-offer-sub-container"
+                                 style="display: flex;    margin-top: 30px;">
+                              <div class="luggage-offer-icon">
+                                <i class="flix-icon flix-icon--lg flix-icon-luggage"> </i>
+                              </div>
+                              <div class="luggage-offer-description">
+                                <div class="luggage-offer-title"
+                                     style="font-weight: 700 !important;inline-size: max-content;">
+                                  Bagage supplémentaire
+                                </div>
+                                <div class="luggage-offer-description">20 kg - 80×50×30 cm
+                                </div>
+                              </div>
+                              <div class="flix-control"
+                                   style="width: auto !important; margin-left: auto;">
+                                <div class="flix-quantity flix-quantity--inline">
+                                  <label
+                                    class="flix-quantity__label"></label>
+                                  <div class="flix-quantity__picker">
+                                    <button (click)="remove()" aria-controls="quantity-inline"
+                                            class="flix-btn flix-btn--square flix-quantity__button"
+                                            id="removebagage"
+                                            title="Remove passenger" type="button">
+                                      <span class="flix-sr-only">Remove</span>
+                                    </button>
+                                    <input [(ngModel)]="bagage" class="flix-quantity__input"
+                                           id="inputbagage"
+                                           name="passengers-quantity" type="number"/>
+                                    <button (click)="add()" aria-controls="quantity-inline"
+                                            class="flix-btn flix-btn--square flix-quantity__button"
+                                            id="addbagage"
+                                            title="Add passenger" type="button">
+                                      <span class="flix-sr-only">Add</span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div style="margin-left: 90px;font-size: 20px;">
+                                3.99 €
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div class="luggage-offer-item" *ngIf="flixbusService.nbrluggage ==0">
+                            <div class="luggage-offer-sub-container"
+                                 style="display: flex;    margin-top: 30px;">
+                              <div class="luggage-offer-icon">
+                                <i class="flix-icon flix-icon--lg flix-icon-luggage"> </i>
+                              </div>
+                              <div class="luggage-offer-description">
+                                <div class="luggage-offer-title"
+                                     style="font-weight: 700 !important">Bagage
+                                  supplémentaire
+                                </div>
+                                <div class="luggage-offer-description">Non disponible pour
+                                  ce
+                                  voyage
+                                </div>
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="flix-checkout-section">
+            <div class="flix-checkout-section-header">
+              <div class="flix-checkout-section-header_number" style="padding: 0px">3</div>
+              <div class="flix-checkout-section-header_label"><h2 class="flix-h2">Contact</h2></div>
+            </div>
+            <div class="flix-checkout-section-content">
+              <div class="flix-checkout-contact-input-section">
+                <div class="flix-checkout-contact-input">
+                  <div class="flix-control">
+                    <div class="flix-input"><label class="flix-label flix-input__label">E-mail</label><input
+                      autocomplete="email" class="flix-input__field" id="email"
+                      value=""></div>
+                  </div>
+                </div>
+                <div class="flix-checkout-contact-input">
+                  <div class="flix-control">
+                    <div class="flix-phone-input flix-input">
+                      <div class="flix-phone-input_country-select">
+                      </div>
+                      <label class="flix-label flix-input__label">Numéro de tél. (facultatif)</label><input
+                      autocomplete="tel" class="flix-input__field"
+                       type="tel" value="+216" id="tel">
+                      <div class="flix-input__info">Utilisé uniquement pour vous contacter en cas de retards ou de
+                        changements d'itinéraires.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flix-checkout-side">
+          <div class="flix-checkout-section-cart">
+            <div class="flix-grid"><h2 class="flix-h2 flix-col">Votre commande</h2>
+
+            </div>
+            <div class="flix-cart-trip flix-cart-section">
+              <table class="flix-connection">
+                <caption class="flix-connection__title"><span
+                  class="flix-connection__title-departure">{{flixbusService.departureTime | date:'mediumDate'}}</span>
+                </caption>
+                <tbody>
+                <tr>
+                  <div class="flix-connection__time">{{flixbusService.departureTime|date:"HH:mm"}}</div>
+                  <td>
+                    <div class="flix-connection__station">{{flixbusService.from}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <div class="flix-connection__time">{{flixbusService.arrivalTime|date:"HH:mm"}}</div>
+                  <td>
+                    <div class="flix-connection__station">{{flixbusService.to}}</div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="flix-cart-items-container-with-price flix-connection__title">
+                <div class="flix-cart-item">
+                  <span>
+                    <span  *ngIf="num(localStorageItem('adult')) > 0">{{localStorageItem("adult")}} Adulte</span>
+                    <span  *ngIf="num(localStorageItem('children')) > 0">, {{localStorageItem("children")}} Enfant</span>
+                  </span>
+                </div>
+                <div class="flix-cart-item-price">
+                  <span *ngIf="num(localStorageItem('bikes')) > 0" class="flix-price">{{flixbusService.total-(9*num(localStorageItem('bikes'))) | number}}&nbsp;€</span>
+                  <span *ngIf="num(localStorageItem('bikes')) == 0" class="flix-price">{{flixbusService.total | number}}&nbsp;€</span>
+
+                </div>
+              </div>
+              <div *ngIf="num(localStorageItem('bikes')) > 0 " class="flix-cart-items-container-with-price flix-connection__title">
+                <div class="flix-cart-item">
+                  <span>
+                    <span>{{localStorageItem('bikes')}} Emplacement pour vélo</span>
+
+                  </span>
+                </div>
+                <div class="flix-cart-item-price">
+                  <span  class="flix-price">{{9*num(localStorageItem('bikes')) | number}}&nbsp;€</span>
+
+
+                </div>
+              </div>
+            </div>
+            <div class="flix-cart-total">
+              <div><b>Total</b> (TTC)</div>
+              <div><b><span class="flix-price">{{flixbusService.total}}&nbsp;€</span></b></div>
+            </div>
+          </div>
+
+          <div class="flix-checkout-section-submit">
+            <div class="hcr-theme-default" style="width: 100%;">
+              <div aria-hidden="true" style="display: block;">
+                <button class="hcr-btn-2-4-3 hcr-btn--primary-2-4-3 hcr-btn--block-2-4-3" data-test="payment-button"
+                        type="button" (click)="onSubmit()">Procéder au paiement
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+</body>
