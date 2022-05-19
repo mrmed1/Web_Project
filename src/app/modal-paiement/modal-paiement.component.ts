@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FlixbusService} from "../Service/flixbus.service";
 import {MatDialogRef} from "@angular/material/dialog";
-import {NgxSpinnerService} from "ngx-spinner";
+
 
 @Component({
   selector: 'app-modal-paiement',
@@ -13,8 +13,8 @@ export class ModalPaiementComponent implements OnInit {
   isShow: boolean = false;
 
   constructor(public flixbusService: FlixbusService,
-              public dialogRef: MatDialogRef<ModalPaiementComponent>,
-              private spinner: NgxSpinnerService) {
+              public dialogRef: MatDialogRef<ModalPaiementComponent>
+             ) {
   }
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class ModalPaiementComponent implements OnInit {
 
   reserver() {
 
-    this.spinner.show()
+
     this.flixbusService.startpaiement();
    this.flixbusService.getTicket().subscribe(
      (value:any) => {
@@ -46,7 +46,7 @@ export class ModalPaiementComponent implements OnInit {
        this.show = false;
        localStorage.setItem("invoice_link",value["order"]["invoice_link"])
        localStorage.setItem("reminder_link",value["order"]["reminder_link"])
-       this.spinner.hide()
+      // this.spinner.hide()
      }
    )
   }

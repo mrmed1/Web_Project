@@ -14,7 +14,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { ModalPaiementComponent } from './modal-paiement/modal-paiement.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
-import { NgxSpinnerModule } from "ngx-spinner";
+
 import { SearchComponent } from './search/search.component';
 
 
@@ -32,13 +32,12 @@ import { ListVoyageComponent } from './list-voyage/list-voyage.component';
     ListVoyageComponent
   ],
   imports: [
-    NgxSpinnerModule,
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
     MatButtonModule,

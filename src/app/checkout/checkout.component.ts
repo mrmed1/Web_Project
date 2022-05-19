@@ -5,7 +5,7 @@ import {stringify} from "@angular/compiler/src/util";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ModalPaiementComponent} from "../modal-paiement/modal-paiement.component";
-import {NgxSpinnerService} from "ngx-spinner";
+
 
 @Component({
   selector: 'app-checkout',
@@ -40,8 +40,7 @@ export class CheckoutComponent implements OnInit {
   items: FormArray | undefined;
   constructor(public flixbusService:FlixbusService,
               private fb:FormBuilder,
-              private dialog: MatDialog,
-              private spinner: NgxSpinnerService) { }
+              private dialog: MatDialog) { }
 
 
 
@@ -114,7 +113,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmit() {
-    this.spinner.show();
+   // this.spinner.show();
     let i;
     let x = [];
 
@@ -147,7 +146,7 @@ export class CheckoutComponent implements OnInit {
         (data:any) => {
           console.log(data.body);
             localStorage.setItem("email",document.getElementById("email")["value"]);
-            this.spinner.hide();
+           // this.spinner.hide();
             this.openDialog();
         },
         error => console.log(error)
