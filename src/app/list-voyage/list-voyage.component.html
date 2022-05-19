@@ -1,0 +1,446 @@
+<app-search></app-search>
+<div id="router">
+  <div class="flix-theme-default ThemeSwitcher__wrap___DgLPS ThemeSwitcher__fullHeight___q8pfj">
+    <div class="hcr-theme-default">
+      <div
+        class="SearchResults__desktopLayout___Bcqhb flix-grid flix-grid--justify-center SearchResults__desktopLayoutWithoutHeader___zxFXE"
+        data-e2e="component-loaded"
+        id="search-results-component">
+        <div class="SearchResults__main___zj81o search-results-main flix-col-12 flix-col-8-lg">
+          <div class="SearchResults__content___hg5aC search-results-main__content">
+            <div class="ResultsList__container___JnkEA ResultsList__animDone___I7PYN">
+              <div class="ResultsList__resultsListPanel___Mr5mf ResultsList__resultsListPanelDesktop___ep2eB">
+                <div class="ResultsList__title___hjTtK ResultsList__titleDesktop___GAFb_">
+                  <div class="TripTitle__titleWrapper___mdefI" data-e2e="search-result-title">
+                    <div>Voyage aller</div>
+                  </div>
+                </div>
+                <div class="ResultsList__meansOfTransportContainer___BP89Z"></div>
+                <div *ngFor="let voyage of list['trips']">
+
+                  <div *ngFor="let trip of voyage['items']"> {{trip.uid}}
+
+                    <div class="SearchResult__searchResult___cgxzZ" data-e2e="search_result_restricted_item"
+                         data-uuid="direct:21ac3507-9513-4acc-b5ca-3b52acbe6340:dcc5426b-9603-11e6-9066-549f350fcb0c:dcc0aca2-9603-11e6-9066-549f350fcb0c"
+                         role="presentation" *ngIf="trip['info_title'] == 'Il n\'y a aucun emplacement pour vélo disponible'">
+                      <div class="SearchResult__unbookableTripRow___ZMKF7">
+                        <div class="SearchResult__locations___DOj9X" data-e2e="search-result-stations-duration-details">
+                          <div class="hcr-grid-4-1-3">
+                            <div class="hcr-col-6-4-1-3 hcr-col-7-sm-4-1-3">
+                              <div class="LocationsHorizontal__departure___bnRmG">
+                                <div class="LocationsHorizontal__time___SaJCp" data-e2e="search-result-departure-time">
+                                  {{trip.departure.timestamp * 1000|date:"HH:MM"}}
+                                </div>
+                                <div class="LocationsHorizontal__duration___rJ6rs">
+                                  <div class="LocationsHorizontal__durationTime___r1KjU"><span
+                                    data-e2e="search-result-duration"> 5:50 </span>h
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="hcr-col-6-4-1-3 hcr-col-5-sm-4-1-3">
+                              <div class="LocationsHorizontal__time___SaJCp" data-e2e="search-result-arrival-time"><span
+                                class="LocationsHorizontal__timeWrapper___TujDY">{{trip.arrival.timestamp * 1000|date:"HH:MM"}}</span></div>
+                            </div>
+                            <div class="hcr-col-6-4-1-3 hcr-col-7-sm-4-1-3">
+                              <div class="LocationsHorizontal__station___ItGEv"
+                                   data-e2e="search-result-departure-station">{{voyage.from.name}}
+                              </div>
+                            </div>
+                            <div class="hcr-col-6-4-1-3 hcr-col-5-sm-4-1-3">
+                              <div class="LocationsHorizontal__station___ItGEv"
+                                   data-e2e="search-result-arrival-station">{{voyage.to.name}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="useResultRestricted__bookingMessage___VxRKf"
+                               data-e2e="search-result-fully-booked-message" >l n'y a pas d'emplacements pour vélo disponible.
+                          </div>
+                        </div>
+                      </div>
+                      <div></div>
+                    </div>
+                    <div class="SearchResult__searchResult___cgxzZ" data-e2e="search_result_restricted_item"
+                         data-uuid="direct:21ac3507-9513-4acc-b5ca-3b52acbe6340:dcc5426b-9603-11e6-9066-549f350fcb0c:dcc0aca2-9603-11e6-9066-549f350fcb0c"
+                         role="presentation" *ngIf="trip['info_title'] == 'Only accompanied'">
+                      <div class="SearchResult__unbookableTripRow___ZMKF7">
+                        <div class="SearchResult__locations___DOj9X" data-e2e="search-result-stations-duration-details">
+                          <div class="hcr-grid-4-1-3">
+                            <div class="hcr-col-6-4-1-3 hcr-col-7-sm-4-1-3">
+                              <div class="LocationsHorizontal__departure___bnRmG">
+                                <div class="LocationsHorizontal__time___SaJCp" data-e2e="search-result-departure-time">
+                                  {{trip.departure.timestamp * 1000|date:"HH:MM"}}
+                                </div>
+                                <div class="LocationsHorizontal__duration___rJ6rs">
+                                  <div class="LocationsHorizontal__durationTime___r1KjU"><span
+                                    data-e2e="search-result-duration"> 5:50 </span>h
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="hcr-col-6-4-1-3 hcr-col-5-sm-4-1-3">
+                              <div class="LocationsHorizontal__time___SaJCp" data-e2e="search-result-arrival-time"><span
+                                class="LocationsHorizontal__timeWrapper___TujDY">{{trip.arrival.timestamp * 1000|date:"HH:MM"}}</span></div>
+                            </div>
+                            <div class="hcr-col-6-4-1-3 hcr-col-7-sm-4-1-3">
+                              <div class="LocationsHorizontal__station___ItGEv"
+                                   data-e2e="search-result-departure-station">{{voyage.from.name}}
+                              </div>
+                            </div>
+                            <div class="hcr-col-6-4-1-3 hcr-col-5-sm-4-1-3">
+                              <div class="LocationsHorizontal__station___ItGEv"
+                                   data-e2e="search-result-arrival-station">{{voyage.to.name}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="useResultRestricted__bookingMessage___VxRKf"
+                               data-e2e="search-result-fully-booked-message" >Seulement accompagné.
+                          </div>
+                        </div>
+                      </div>
+                      <div></div>
+                    </div>
+                    <div class="SearchResult__searchResult___cgxzZ" data-e2e="search_result_restricted_item"
+                         data-uuid="direct:21ac3507-9513-4acc-b5ca-3b52acbe6340:dcc5426b-9603-11e6-9066-549f350fcb0c:dcc0aca2-9603-11e6-9066-549f350fcb0c"
+                         role="presentation" *ngIf="trip['status'] == 'full' && trip['info_title'] != 'Il n\'y a aucun emplacement pour vélo disponible'">
+                      <div class="SearchResult__unbookableTripRow___ZMKF7">
+                        <div class="SearchResult__locations___DOj9X" data-e2e="search-result-stations-duration-details">
+                          <div class="hcr-grid-4-1-3">
+                            <div class="hcr-col-6-4-1-3 hcr-col-7-sm-4-1-3">
+                              <div class="LocationsHorizontal__departure___bnRmG">
+                                <div class="LocationsHorizontal__time___SaJCp" data-e2e="search-result-departure-time">
+                                  {{trip.departure.timestamp * 1000|date:"HH:MM"}}
+                                </div>
+                                <div class="LocationsHorizontal__duration___rJ6rs">
+                                  <div class="LocationsHorizontal__durationTime___r1KjU"><span
+                                    data-e2e="search-result-duration"> 5:50 </span>h
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="hcr-col-6-4-1-3 hcr-col-5-sm-4-1-3">
+                              <div class="LocationsHorizontal__time___SaJCp" data-e2e="search-result-arrival-time"><span
+                                class="LocationsHorizontal__timeWrapper___TujDY">{{trip.arrival.timestamp * 1000|date:"HH:MM"}}</span></div>
+                            </div>
+                            <div class="hcr-col-6-4-1-3 hcr-col-7-sm-4-1-3">
+                              <div class="LocationsHorizontal__station___ItGEv"
+                                   data-e2e="search-result-departure-station">{{voyage.from.name}}
+                              </div>
+                            </div>
+                            <div class="hcr-col-6-4-1-3 hcr-col-5-sm-4-1-3">
+                              <div class="LocationsHorizontal__station___ItGEv"
+                                   data-e2e="search-result-arrival-station">{{voyage.to.name}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="useResultRestricted__bookingMessage___VxRKf"
+                               data-e2e="search-result-fully-booked-message" >Ce trajet est complet.
+                          </div>
+                        </div>
+                      </div>
+                      <div></div>
+                    </div>
+                    <div class="ResultsList__resultsList___eGsLK" data-e2e="search-result-list"  *ngIf="trip['status'] == 'available'">
+                      <div
+                        class="SearchResult__searchResult___cgxzZ SearchResult__expandable___M10px"
+                        data-e2e="search-result-item search-result-item-direct:51b97fbf-a237-4545-990b-21008fefaf6c:dcc5426b-9603-11e6-9066-549f350fcb0c:dcc0aca2-9603-11e6-9066-549f350fcb0c">
+                        <div class="SearchResult__main___I4TtH" role="presentation">
+                          <div class="SearchResult__rowRideAndPrice___u0TJA">
+                            <div class="SearchResult__locations___DOj9X">
+                              <div class="hcr-grid-4-1-3">
+                                <div class="hcr-col-6-4-1-3 hcr-col-7-sm-4-1-3">
+                                  <div class="LocationsHorizontal__departure___bnRmG">
+                                    <div class="LocationsHorizontal__time___SaJCp"
+                                         data-e2e="search-result-departure-time">
+                                      {{trip.departure.timestamp * 1000|date:"HH:MM"}}
+                                    </div>
+                                    <div class="LocationsHorizontal__duration___rJ6rs">
+                                      <div class="LocationsHorizontal__durationTime___r1KjU"><span
+                                        data-e2e="search-result-duration"> {{trip.duration.hour}}
+                                        :{{trip.duration.minutes}} </span>h
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="hcr-col-6-4-1-3 hcr-col-5-sm-4-1-3">
+                                  <div class="LocationsHorizontal__time___SaJCp" data-e2e="search-result-arrival-time">
+                                    {{trip.arrival.timestamp * 1000|date:"HH:MM"}}
+                                  </div>
+                                </div>
+                                <div class="hcr-col-6-4-1-3 hcr-col-7-sm-4-1-3">
+                                  <div class="LocationsHorizontal__station___ItGEv"
+                                       data-e2e="search-result-departure-station">{{voyage.from.name}}
+                                  </div>
+                                </div>
+                                <div class="hcr-col-6-4-1-3 hcr-col-5-sm-4-1-3">
+                                  <div class="LocationsHorizontal__station___ItGEv"
+                                       data-e2e="search-result-arrival-station">{{voyage.to.name}}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <button class="SearchResult__priceBook___GsdUi"><span
+                              aria-label="78<sup>,99</sup>&nbsp;€"
+                              class="SearchResult__price___QpySa SearchResult__cheapestFastestColor___fd4Jt"
+                              data-e2e="search-result-prices">{{trip.price_total_sum}}&nbsp;€</span></button>
+                          </div>
+
+                          <div class="SearchResult__rowInfo___kevIw" data-e2e="search-result-trip-details">
+                            <div *ngIf="trip['transfer_type_key'] === 'direct'"
+                                 class="SearchResult__transferInfo___ALn3E">
+                              <div class="TransferPill__changesInfo___z2Jqj">
+                                <div class="hcr-tag-4-1-3 TransferPill__tag___sBzcr"><span
+                                  class="hcr-tag__text-4-1-3"><span
+                                  class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                  data-e2e="search-result-means-of-transport-icon"><svg class="hcr-svg-bus"
+                                                                                        role="img"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M20.5 6.42h-.83v-.59A3.84 3.84 0 0015.84 2H8.16a3.83 3.83 0 00-3.83 3.83v.6H3.5a1.05 1.05 0 00-1.05 1.04V9.1a1.05 1.05 0 001.05 1.05h.83v10.8A1.05 1.05 0 005.38 22h1.4a1.05 1.05 0 001.05-1.05v-.83h8.34v.83A1.05 1.05 0 0017.22 22h1.4a1.05 1.05 0 001.05-1.05V10.14h.83a1.05 1.05 0 001.05-1.05V7.47a1.05 1.05 0 00-1.05-1.05zM4.33 9.15H3.5a.06.06 0 01-.06-.06V7.47a.06.06 0 01.06-.05h.83v1.73zm2.51 11.8a.06.06 0 01-.06.06h-1.4a.06.06 0 01-.05-.04v-.85h1.51v.83zm11.84 0a.06.06 0 01-.02.04.06.06 0 01-.04.02h-1.4a.06.06 0 01-.06-.06v-.83h1.52v.83zm0-1.83H5.32V15c2.21.34 4.44.51 6.68.5 2.24.01 4.47-.16 6.68-.5v4.12zm0-5.13c-4.43.7-8.93.7-13.36 0V5.83a2.84 2.84 0 012.84-2.84h7.68a2.84 2.84 0 012.84 2.84v8.16zm1.88-4.9a.06.06 0 01-.01.04.06.06 0 01-.05.02h-.83V7.42h.83a.06.06 0 01.04.01.06.06 0 01.02.04V9.1zm-5.02 8.14a.5.5 0 01.5-.5h.8a.5.5 0 010 1h-.8a.5.5 0 01-.5-.5zm-7.08 0a.5.5 0 01-.5.5h-.8a.5.5 0 01-.52-.7.5.5 0 01.51-.29h.81a.5.5 0 01.5.5z"></path></svg></span><span
+                                  class="TransferPill__transferTypeLabel___R7OUb">Bus</span><span
+                                  class="TransferPill__divider___mDWlP"></span><span
+                                  class="TransferPill__transferTypeLabel___R7OUb">Direct</span><span
+                                  class="hcr-icon-4-1-3 TransferPill__collapsed___h3Xt2"><svg class="hcr-svg-arrow-down"
+                                                                                              role="img"
+                                                                                              viewBox="0 0 24 24"
+                                                                                              xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M11.65 14.83L6.7 9.88a.5.5 0 11.7-.7l4.6 4.59 4.6-4.6a.5.5 0 01.7.7l-4.93 4.95-.01.01a.5.5 0 01-.71 0z"></path></svg></span></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="trip['transfer_type_key'] === 'train'"
+                                 class="SearchResult__transferInfo___ALn3E">
+                              <div class="TransferPill__changesInfo___z2Jqj">
+                                <div class="hcr-tag-4-1-3 TransferPill__tag___sBzcr"><span
+                                  class="hcr-tag__text-4-1-3"><span
+                                  class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                  data-e2e="search-result-means-of-transport-icon"><svg class="hcr-svg-train"
+                                                                                        role="img"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M20.5 6.42h-.83v-.59A3.84 3.84 0 0015.84 2H8.16a3.83 3.83 0 00-3.83 3.83v.6H3.5a1.05 1.05 0 00-1.05 1.04V9.1a1.05 1.05 0 001.05 1.05h.83v10.8A1.05 1.05 0 005.38 22h1.4a1.05 1.05 0 001.05-1.05v-.83h8.34v.83A1.05 1.05 0 0017.22 22h1.4a1.05 1.05 0 001.05-1.05V10.14h.83a1.05 1.05 0 001.05-1.05V7.47a1.05 1.05 0 00-1.05-1.05zM4.33 9.15H3.5a.06.06 0 01-.06-.06V7.47a.06.06 0 01.06-.05h.83v1.73zm2.51 11.8a.06.06 0 01-.06.06h-1.4a.06.06 0 01-.05-.04v-.85h1.51v.83zm11.84 0a.06.06 0 01-.02.04.06.06 0 01-.04.02h-1.4a.06.06 0 01-.06-.06v-.83h1.52v.83zm0-1.83H5.32V15c2.21.34 4.44.51 6.68.5 2.24.01 4.47-.16 6.68-.5v4.12zm0-5.13c-4.43.7-8.93.7-13.36 0V5.83a2.84 2.84 0 012.84-2.84h7.68a2.84 2.84 0 012.84 2.84v8.16zm1.88-4.9a.06.06 0 01-.01.04.06.06 0 01-.05.02h-.83V7.42h.83a.06.06 0 01.04.01.06.06 0 01.02.04V9.1zm-5.02 8.14a.5.5 0 01.5-.5h.8a.5.5 0 010 1h-.8a.5.5 0 01-.5-.5zm-7.08 0a.5.5 0 01-.5.5h-.8a.5.5 0 01-.52-.7.5.5 0 01.51-.29h.81a.5.5 0 01.5.5z"></path></svg></span><span
+                                  class="TransferPill__transferTypeLabel___R7OUb">Bus</span><span
+                                  class="TransferPill__divider___mDWlP"></span><span
+                                  class="TransferPill__transferTypeLabel___R7OUb">Direct</span><span
+                                  class="hcr-icon-4-1-3 TransferPill__collapsed___h3Xt2"><svg class="hcr-svg-arrow-down"
+                                                                                              role="img"
+                                                                                              viewBox="0 0 24 24"
+                                                                                              xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M11.65 14.83L6.7 9.88a.5.5 0 11.7-.7l4.6 4.59 4.6-4.6a.5.5 0 01.7.7l-4.93 4.95-.01.01a.5.5 0 01-.71 0z"></path></svg></span></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="trip['transfer_type_key'] === 'direct#train'"
+                                 class="SearchResult__transferInfo___ALn3E">
+                              <div class="TransferPill__changesInfo___z2Jqj">
+                                <div class="hcr-tag-4-1-3 TransferPill__tag___sBzcr"><span
+                                  class="hcr-tag__text-4-1-3"><span class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                                                    data-e2e="search-result-means-of-transport-icon"><svg
+                                  class="hcr-svg-bus" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M20.5 6.42h-.83v-.59A3.84 3.84 0 0015.84 2H8.16a3.83 3.83 0 00-3.83 3.83v.6H3.5a1.05 1.05 0 00-1.05 1.04V9.1a1.05 1.05 0 001.05 1.05h.83v10.8A1.05 1.05 0 005.38 22h1.4a1.05 1.05 0 001.05-1.05v-.83h8.34v.83A1.05 1.05 0 0017.22 22h1.4a1.05 1.05 0 001.05-1.05V10.14h.83a1.05 1.05 0 001.05-1.05V7.47a1.05 1.05 0 00-1.05-1.05zM4.33 9.15H3.5a.06.06 0 01-.06-.06V7.47a.06.06 0 01.06-.05h.83v1.73zm2.51 11.8a.06.06 0 01-.06.06h-1.4a.06.06 0 01-.05-.04v-.85h1.51v.83zm11.84 0a.06.06 0 01-.02.04.06.06 0 01-.04.02h-1.4a.06.06 0 01-.06-.06v-.83h1.52v.83zm0-1.83H5.32V15c2.21.34 4.44.51 6.68.5 2.24.01 4.47-.16 6.68-.5v4.12zm0-5.13c-4.43.7-8.93.7-13.36 0V5.83a2.84 2.84 0 012.84-2.84h7.68a2.84 2.84 0 012.84 2.84v8.16zm1.88-4.9a.06.06 0 01-.01.04.06.06 0 01-.05.02h-.83V7.42h.83a.06.06 0 01.04.01.06.06 0 01.02.04V9.1zm-5.02 8.14a.5.5 0 01.5-.5h.8a.5.5 0 010 1h-.8a.5.5 0 01-.5-.5zm-7.08 0a.5.5 0 01-.5.5h-.8a.5.5 0 01-.52-.7.5.5 0 01.51-.29h.81a.5.5 0 01.5.5z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3"><svg class="hcr-svg-arrow-right" role="img"
+                                                              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M14.83 12.35L9.88 17.3a.5.5 0 01-.7-.7l4.59-4.6-4.6-4.6a.5.5 0 01.7-.7l4.95 4.94h.01a.5.5 0 010 .71z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                  data-e2e="search-result-means-of-transport-icon"><svg class="hcr-svg-train"
+                                                                                        role="img"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M18.02 8.02v-1a3 3 0 00-3-3h-6a3 3 0 00-3 3v1a3 3 0 003 3h6a3 3 0 003-3zm-1 0a2 2 0 01-2 2h-6a2 2 0 01-2-2v-1a2 2 0 012-2h6a2 2 0 012 2v1zM12 12a2 2 0 100 4 2 2 0 000-4zm0 3a1 1 0 110-2 1 1 0 010 2zm4.85-.5h-.82a.5.5 0 010-1h.82a.5.5 0 010 1zM8.47 14a.5.5 0 01-.5.5h-.82a.5.5 0 010-1h.82a.5.5 0 01.5.5zm13.27 7.06L16.24 18h.78A3 3 0 0020 15V5a3 3 0 00-3-3H7a3 3 0 00-3 3v10a3 3 0 002.98 3h.79l-5.51 3.06a.5.5 0 00.48.88l.79-.44h16.94l.79.44a.5.5 0 10.48-.88zM7 17a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H7zm8.53 1.75H8.47L9.82 18h4.36l1.35.75zM5.33 20.5l1.34-.75h10.66l1.34.75H5.33z"></path></svg></span><span
+                                  class="TransferPill__divider___mDWlP"></span><span
+                                  class="TransferPill__transferTypeLabel___R7OUb">1 Correspondance</span><span
+                                  class="hcr-icon-4-1-3 TransferPill__collapsed___h3Xt2"><svg class="hcr-svg-arrow-down"
+                                                                                              role="img"
+                                                                                              viewBox="0 0 24 24"
+                                                                                              xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M11.65 14.83L6.7 9.88a.5.5 0 11.7-.7l4.6 4.59 4.6-4.6a.5.5 0 01.7.7l-4.93 4.95-.01.01a.5.5 0 01-.71 0z"></path></svg></span></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="trip['transfer_type_key'] === 'train#direct'"
+                                 class="SearchResult__transferInfo___ALn3E">
+                              <div class="TransferPill__changesInfo___z2Jqj">
+                                <div class="hcr-tag-4-1-3 TransferPill__tag___sBzcr"><span
+                                  class="hcr-tag__text-4-1-3"><span class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                                                    data-e2e="search-result-means-of-transport-icon"><svg
+                                  class="hcr-svg-train" role="img" viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M20.5 6.42h-.83v-.59A3.84 3.84 0 0015.84 2H8.16a3.83 3.83 0 00-3.83 3.83v.6H3.5a1.05 1.05 0 00-1.05 1.04V9.1a1.05 1.05 0 001.05 1.05h.83v10.8A1.05 1.05 0 005.38 22h1.4a1.05 1.05 0 001.05-1.05v-.83h8.34v.83A1.05 1.05 0 0017.22 22h1.4a1.05 1.05 0 001.05-1.05V10.14h.83a1.05 1.05 0 001.05-1.05V7.47a1.05 1.05 0 00-1.05-1.05zM4.33 9.15H3.5a.06.06 0 01-.06-.06V7.47a.06.06 0 01.06-.05h.83v1.73zm2.51 11.8a.06.06 0 01-.06.06h-1.4a.06.06 0 01-.05-.04v-.85h1.51v.83zm11.84 0a.06.06 0 01-.02.04.06.06 0 01-.04.02h-1.4a.06.06 0 01-.06-.06v-.83h1.52v.83zm0-1.83H5.32V15c2.21.34 4.44.51 6.68.5 2.24.01 4.47-.16 6.68-.5v4.12zm0-5.13c-4.43.7-8.93.7-13.36 0V5.83a2.84 2.84 0 012.84-2.84h7.68a2.84 2.84 0 012.84 2.84v8.16zm1.88-4.9a.06.06 0 01-.01.04.06.06 0 01-.05.02h-.83V7.42h.83a.06.06 0 01.04.01.06.06 0 01.02.04V9.1zm-5.02 8.14a.5.5 0 01.5-.5h.8a.5.5 0 010 1h-.8a.5.5 0 01-.5-.5zm-7.08 0a.5.5 0 01-.5.5h-.8a.5.5 0 01-.52-.7.5.5 0 01.51-.29h.81a.5.5 0 01.5.5z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3"><svg class="hcr-svg-arrow-right" role="img"
+                                                              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M14.83 12.35L9.88 17.3a.5.5 0 01-.7-.7l4.59-4.6-4.6-4.6a.5.5 0 01.7-.7l4.95 4.94h.01a.5.5 0 010 .71z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                  data-e2e="search-result-means-of-transport-icon"><svg class="hcr-svg-bus"
+                                                                                        role="img"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M18.02 8.02v-1a3 3 0 00-3-3h-6a3 3 0 00-3 3v1a3 3 0 003 3h6a3 3 0 003-3zm-1 0a2 2 0 01-2 2h-6a2 2 0 01-2-2v-1a2 2 0 012-2h6a2 2 0 012 2v1zM12 12a2 2 0 100 4 2 2 0 000-4zm0 3a1 1 0 110-2 1 1 0 010 2zm4.85-.5h-.82a.5.5 0 010-1h.82a.5.5 0 010 1zM8.47 14a.5.5 0 01-.5.5h-.82a.5.5 0 010-1h.82a.5.5 0 01.5.5zm13.27 7.06L16.24 18h.78A3 3 0 0020 15V5a3 3 0 00-3-3H7a3 3 0 00-3 3v10a3 3 0 002.98 3h.79l-5.51 3.06a.5.5 0 00.48.88l.79-.44h16.94l.79.44a.5.5 0 10.48-.88zM7 17a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H7zm8.53 1.75H8.47L9.82 18h4.36l1.35.75zM5.33 20.5l1.34-.75h10.66l1.34.75H5.33z"></path></svg></span><span
+                                  class="TransferPill__divider___mDWlP"></span><span
+                                  class="TransferPill__transferTypeLabel___R7OUb">1 Correspondance</span><span
+                                  class="hcr-icon-4-1-3 TransferPill__collapsed___h3Xt2"><svg class="hcr-svg-arrow-down"
+                                                                                              role="img"
+                                                                                              viewBox="0 0 24 24"
+                                                                                              xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M11.65 14.83L6.7 9.88a.5.5 0 11.7-.7l4.6 4.59 4.6-4.6a.5.5 0 01.7.7l-4.93 4.95-.01.01a.5.5 0 01-.71 0z"></path></svg></span></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              *ngIf="trip['transfer_type_key'] === 'direct#direct' || trip['transfer_type_key'] === 'direct_express#direct'  || trip['transfer_type_key'] === 'direct#fast'"
+                              class="SearchResult__transferInfo___ALn3E">
+                              <div class="TransferPill__changesInfo___z2Jqj">
+                                <div class="hcr-tag-4-1-3 TransferPill__tag___sBzcr"><span
+                                  class="hcr-tag__text-4-1-3"><span class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                                                    data-e2e="search-result-means-of-transport-icon"><svg
+                                  class="hcr-svg-bus" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M20.5 6.42h-.83v-.59A3.84 3.84 0 0015.84 2H8.16a3.83 3.83 0 00-3.83 3.83v.6H3.5a1.05 1.05 0 00-1.05 1.04V9.1a1.05 1.05 0 001.05 1.05h.83v10.8A1.05 1.05 0 005.38 22h1.4a1.05 1.05 0 001.05-1.05v-.83h8.34v.83A1.05 1.05 0 0017.22 22h1.4a1.05 1.05 0 001.05-1.05V10.14h.83a1.05 1.05 0 001.05-1.05V7.47a1.05 1.05 0 00-1.05-1.05zM4.33 9.15H3.5a.06.06 0 01-.06-.06V7.47a.06.06 0 01.06-.05h.83v1.73zm2.51 11.8a.06.06 0 01-.06.06h-1.4a.06.06 0 01-.05-.04v-.85h1.51v.83zm11.84 0a.06.06 0 01-.02.04.06.06 0 01-.04.02h-1.4a.06.06 0 01-.06-.06v-.83h1.52v.83zm0-1.83H5.32V15c2.21.34 4.44.51 6.68.5 2.24.01 4.47-.16 6.68-.5v4.12zm0-5.13c-4.43.7-8.93.7-13.36 0V5.83a2.84 2.84 0 012.84-2.84h7.68a2.84 2.84 0 012.84 2.84v8.16zm1.88-4.9a.06.06 0 01-.01.04.06.06 0 01-.05.02h-.83V7.42h.83a.06.06 0 01.04.01.06.06 0 01.02.04V9.1zm-5.02 8.14a.5.5 0 01.5-.5h.8a.5.5 0 010 1h-.8a.5.5 0 01-.5-.5zm-7.08 0a.5.5 0 01-.5.5h-.8a.5.5 0 01-.52-.7.5.5 0 01.51-.29h.81a.5.5 0 01.5.5z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3"><svg class="hcr-svg-arrow-right" role="img"
+                                                              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M14.83 12.35L9.88 17.3a.5.5 0 01-.7-.7l4.59-4.6-4.6-4.6a.5.5 0 01.7-.7l4.95 4.94h.01a.5.5 0 010 .71z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                  data-e2e="search-result-means-of-transport-icon"><svg class="hcr-svg-bus"
+                                                                                        role="img"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M20.5 6.42h-.83v-.59A3.84 3.84 0 0015.84 2H8.16a3.83 3.83 0 00-3.83 3.83v.6H3.5a1.05 1.05 0 00-1.05 1.04V9.1a1.05 1.05 0 001.05 1.05h.83v10.8A1.05 1.05 0 005.38 22h1.4a1.05 1.05 0 001.05-1.05v-.83h8.34v.83A1.05 1.05 0 0017.22 22h1.4a1.05 1.05 0 001.05-1.05V10.14h.83a1.05 1.05 0 001.05-1.05V7.47a1.05 1.05 0 00-1.05-1.05zM4.33 9.15H3.5a.06.06 0 01-.06-.06V7.47a.06.06 0 01.06-.05h.83v1.73zm2.51 11.8a.06.06 0 01-.06.06h-1.4a.06.06 0 01-.05-.04v-.85h1.51v.83zm11.84 0a.06.06 0 01-.02.04.06.06 0 01-.04.02h-1.4a.06.06 0 01-.06-.06v-.83h1.52v.83zm0-1.83H5.32V15c2.21.34 4.44.51 6.68.5 2.24.01 4.47-.16 6.68-.5v4.12zm0-5.13c-4.43.7-8.93.7-13.36 0V5.83a2.84 2.84 0 012.84-2.84h7.68a2.84 2.84 0 012.84 2.84v8.16zm1.88-4.9a.06.06 0 01-.01.04.06.06 0 01-.05.02h-.83V7.42h.83a.06.06 0 01.04.01.06.06 0 01.02.04V9.1zm-5.02 8.14a.5.5 0 01.5-.5h.8a.5.5 0 010 1h-.8a.5.5 0 01-.5-.5zm-7.08 0a.5.5 0 01-.5.5h-.8a.5.5 0 01-.52-.7.5.5 0 01.51-.29h.81a.5.5 0 01.5.5z"></path></svg></span><span
+                                  class="TransferPill__divider___mDWlP"></span><span
+                                  class="TransferPill__transferTypeLabel___R7OUb">1 Correspondance</span><span
+                                  class="hcr-icon-4-1-3 TransferPill__collapsed___h3Xt2"><svg class="hcr-svg-arrow-down"
+                                                                                              role="img"
+                                                                                              viewBox="0 0 24 24"
+                                                                                              xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M11.65 14.83L6.7 9.88a.5.5 0 11.7-.7l4.6 4.59 4.6-4.6a.5.5 0 01.7.7l-4.93 4.95-.01.01a.5.5 0 01-.71 0z"></path></svg></span></span>
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="trip['transfer_type_key'] === 'train#train'"
+                                 class="SearchResult__transferInfo___ALn3E">
+                              <div class="TransferPill__changesInfo___z2Jqj">
+                                <div class="hcr-tag-4-1-3 TransferPill__tag___sBzcr"><span
+                                  class="hcr-tag__text-4-1-3"><span class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                                                    data-e2e="search-result-means-of-transport-icon"><svg
+                                  class="hcr-svg-train" role="img" viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M20.5 6.42h-.83v-.59A3.84 3.84 0 0015.84 2H8.16a3.83 3.83 0 00-3.83 3.83v.6H3.5a1.05 1.05 0 00-1.05 1.04V9.1a1.05 1.05 0 001.05 1.05h.83v10.8A1.05 1.05 0 005.38 22h1.4a1.05 1.05 0 001.05-1.05v-.83h8.34v.83A1.05 1.05 0 0017.22 22h1.4a1.05 1.05 0 001.05-1.05V10.14h.83a1.05 1.05 0 001.05-1.05V7.47a1.05 1.05 0 00-1.05-1.05zM4.33 9.15H3.5a.06.06 0 01-.06-.06V7.47a.06.06 0 01.06-.05h.83v1.73zm2.51 11.8a.06.06 0 01-.06.06h-1.4a.06.06 0 01-.05-.04v-.85h1.51v.83zm11.84 0a.06.06 0 01-.02.04.06.06 0 01-.04.02h-1.4a.06.06 0 01-.06-.06v-.83h1.52v.83zm0-1.83H5.32V15c2.21.34 4.44.51 6.68.5 2.24.01 4.47-.16 6.68-.5v4.12zm0-5.13c-4.43.7-8.93.7-13.36 0V5.83a2.84 2.84 0 012.84-2.84h7.68a2.84 2.84 0 012.84 2.84v8.16zm1.88-4.9a.06.06 0 01-.01.04.06.06 0 01-.05.02h-.83V7.42h.83a.06.06 0 01.04.01.06.06 0 01.02.04V9.1zm-5.02 8.14a.5.5 0 01.5-.5h.8a.5.5 0 010 1h-.8a.5.5 0 01-.5-.5zm-7.08 0a.5.5 0 01-.5.5h-.8a.5.5 0 01-.52-.7.5.5 0 01.51-.29h.81a.5.5 0 01.5.5z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3"><svg class="hcr-svg-arrow-right" role="img"
+                                                              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M14.83 12.35L9.88 17.3a.5.5 0 01-.7-.7l4.59-4.6-4.6-4.6a.5.5 0 01.7-.7l4.95 4.94h.01a.5.5 0 010 .71z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3"
+                                  data-e2e="search-result-means-of-transport-icon"><svg class="hcr-svg-train"
+                                                                                        role="img"
+                                                                                        viewBox="0 0 24 24"
+                                                                                        xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M20.5 6.42h-.83v-.59A3.84 3.84 0 0015.84 2H8.16a3.83 3.83 0 00-3.83 3.83v.6H3.5a1.05 1.05 0 00-1.05 1.04V9.1a1.05 1.05 0 001.05 1.05h.83v10.8A1.05 1.05 0 005.38 22h1.4a1.05 1.05 0 001.05-1.05v-.83h8.34v.83A1.05 1.05 0 0017.22 22h1.4a1.05 1.05 0 001.05-1.05V10.14h.83a1.05 1.05 0 001.05-1.05V7.47a1.05 1.05 0 00-1.05-1.05zM4.33 9.15H3.5a.06.06 0 01-.06-.06V7.47a.06.06 0 01.06-.05h.83v1.73zm2.51 11.8a.06.06 0 01-.06.06h-1.4a.06.06 0 01-.05-.04v-.85h1.51v.83zm11.84 0a.06.06 0 01-.02.04.06.06 0 01-.04.02h-1.4a.06.06 0 01-.06-.06v-.83h1.52v.83zm0-1.83H5.32V15c2.21.34 4.44.51 6.68.5 2.24.01 4.47-.16 6.68-.5v4.12zm0-5.13c-4.43.7-8.93.7-13.36 0V5.83a2.84 2.84 0 012.84-2.84h7.68a2.84 2.84 0 012.84 2.84v8.16zm1.88-4.9a.06.06 0 01-.01.04.06.06 0 01-.05.02h-.83V7.42h.83a.06.06 0 01.04.01.06.06 0 01.02.04V9.1zm-5.02 8.14a.5.5 0 01.5-.5h.8a.5.5 0 010 1h-.8a.5.5 0 01-.5-.5zm-7.08 0a.5.5 0 01-.5.5h-.8a.5.5 0 01-.52-.7.5.5 0 01.51-.29h.81a.5.5 0 01.5.5z"></path></svg></span><span
+                                  class="TransferPill__divider___mDWlP"></span><span
+                                  class="TransferPill__transferTypeLabel___R7OUb">1 Correspondance</span><span
+                                  class="hcr-icon-4-1-3 TransferPill__collapsed___h3Xt2"><svg class="hcr-svg-arrow-down"
+                                                                                              role="img"
+                                                                                              viewBox="0 0 24 24"
+                                                                                              xmlns="http://www.w3.org/2000/svg"><path
+                                  d="M11.65 14.83L6.7 9.88a.5.5 0 11.7-.7l4.6 4.59 4.6-4.6a.5.5 0 01.7.7l-4.93 4.95-.01.01a.5.5 0 01-.71 0z"></path></svg></span></span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="SearchResult__bookButtonWrap___bvz2p">
+                              <div class="BookButton__wrapper___FNLt6" role="presentation">
+                                <button (click)="tocheckout(trip.uid)"
+                                  class="hcr-btn-4-1-3 hcr-btn--secondary-4-1-3 hcr-btn--block-4-1-3 SearchResult__bookButton___KC_GC BookButton__button___u6PEV BookButton__desktop___MMZ9T"
+                                  data-e2e="button-reserve-trip" type="button"><span
+                                  aria-label="78<sup>,99</sup>&nbsp;€"
+                                  data-e2e="search-result-prices"
+                                  style="width: 140px">Réserver 1 siège</span>
+                                </button>
+                                <div class="SearchResult__bookButton___KC_GC BookButton__mobile___HcCwR"><span
+                                  aria-label="78<sup>,99</sup>&nbsp;€"
+                                  class="BookButton__iconOnlyCTAPrice___rL64w SearchResult__cheapestFastestColor___fd4Jt"
+                                  data-e2e="search-result-prices">78<sup>,99</sup>&nbsp;€</span>
+                                  <button
+                                    aria-label="78<sup>,99</sup>&nbsp;€"
+                                    class="hcr-btn-4-1-3 hcr-btn--secondary-4-1-3 hcr-btn--square-4-1-3 hcr-btn--has-icon-4-1-3 BookButton__iconOnlyCTA___vO6xd BookButton__button___u6PEV"
+                                    data-e2e="button-reserve-trip" type="button"><span
+                                    aria-hidden="true" class="hcr-icon-4-1-3 hcr-btn__icon-4-1-3"><svg fill="none"
+                                                                                                       height="24"
+                                                                                                       viewBox="0 0 24 24"
+                                                                                                       width="24"
+                                                                                                       xmlns="http://www.w3.org/2000/svg"><path
+                                    d="M8.25401 3.5C8.12247 3.5 7.99223 3.52595 7.87074 3.57636C7.74944 3.62669 7.63925 3.70042 7.54645 3.79334C7.45354 3.88614 7.37981 3.99633 7.32948 4.11763C7.27906 4.23912 7.25311 4.36936 7.25311 4.50089C7.25311 4.63243 7.27906 4.76267 7.32948 4.88416C7.37982 5.00549 7.45395 5.11608 7.5469 5.20889L14.3332 12.0009L7.54645 18.7933C7.45354 18.8863 7.37983 18.9966 7.32954 19.118C7.27926 19.2394 7.25338 19.3695 7.25338 19.5009C7.25338 19.6323 7.27926 19.7624 7.32954 19.8838C7.37983 20.0052 7.45354 20.1155 7.54645 20.2084C7.63937 20.3014 7.74968 20.3751 7.87108 20.4254C7.99248 20.4756 8.12259 20.5015 8.25401 20.5015C8.38542 20.5015 8.51554 20.4756 8.63693 20.4254C8.75833 20.3751 8.86864 20.3014 8.96156 20.2084L16.4616 12.7084C16.5545 12.6156 16.6282 12.5055 16.6785 12.3842C16.729 12.2627 16.7549 12.1324 16.7549 12.0009C16.7549 11.8694 16.729 11.7391 16.6785 11.6176C16.6281 11.4961 16.5542 11.3858 16.4611 11.2929L8.9617 3.79348C8.86888 3.7005 8.75863 3.62672 8.63727 3.57636C8.51578 3.52595 8.38554 3.5 8.25401 3.5Z"
+                                    fill="#FFF"></path></svg></span></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="SearchResult__uspsAndCapacity___XucTk">
+                              <div *ngIf="trip['available']['seats']< 50 && trip['available']['seats'] >= 20"
+                                   class="SearchResult__capacity___di8HI">
+                                <div class="RideCapacity__busCapacity___VoHUl RideCapacity__hasLabel___ekPDc"><span
+                                  class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3 RideCapacity__iconCapacity___mjkiC"><svg
+                                  class="hcr-svg-capacity-two" role="img" viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"><title>À moitié plein</title><path
+                                  d="M10 6a2 2 0 114 0 2 2 0 01-4 0zm2 3a3 3 0 00-3 3v2.4a.6.6 0 00.6.6h.4v4.4a.6.6 0 00.6.6h2.8a.6.6 0 00.6-.6V15h.4a.6.6 0 00.6-.6V12a3 3 0 00-3-3zM5 8a2 2 0 100-4 2 2 0 000 4zm0 1a3 3 0 00-3 3v2.4a.6.6 0 00.6.6H3v4.4a.6.6 0 00.6.6h2.8a.6.6 0 00.6-.6V15h.4a.6.6 0 00.6-.6V12a3 3 0 00-3-3zm12-3a2 2 0 114 0 2 2 0 01-4 0zm1 0a1 1 0 102 0 1 1 0 00-2 0zm4 6v2.4a.6.6 0 01-.6.6H21v4.4a.6.6 0 01-.6.6h-2.8a.6.6 0 01-.6-.6V15h-.4a.6.6 0 01-.6-.6V12a3 3 0 016 0zm-1 0a2 2 0 00-4 0v2h1v5h2v-5h1v-2z"></path></svg></span><span
+                                  class="RideCapacity__busCapacityText___xGKoW"
+                                  title="À moitié plein">À moitié plein</span>
+                                </div>
+                              </div>
+                              <div *ngIf="trip['available']['seats']< 20" class="SearchResult__capacity___di8HI">
+                                <div class="RideCapacity__busCapacity___VoHUl RideCapacity__hasLabel___ekPDc"><span
+                                  class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3 RideCapacity__iconCapacity___mjkiC"><svg
+                                  class="hcr-svg-capacity-three" role="img" viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"><title>Presque complet</title><path
+                                  d="M10 6a2 2 0 114 0 2 2 0 01-4 0zm2 3a3 3 0 00-3 3v2.4a.6.6 0 00.6.6h.4v4.4a.6.6 0 00.6.6h2.8a.6.6 0 00.6-.6V15h.4a.6.6 0 00.6-.6V12a3 3 0 00-3-3zM5 8a2 2 0 100-4 2 2 0 000 4zm0 1a3 3 0 00-3 3v2.4a.6.6 0 00.6.6H3v4.4a.6.6 0 00.6.6h2.8a.6.6 0 00.6-.6V15h.4a.6.6 0 00.6-.6V12a3 3 0 00-3-3zm14-1a2 2 0 100-4 2 2 0 000 4zm0 1a3 3 0 00-3 3v2.4a.6.6 0 00.6.6h.4v4.4a.6.6 0 00.6.6h2.8a.6.6 0 00.6-.6V15h.4a.6.6 0 00.6-.6V12a3 3 0 00-3-3z"></path></svg></span><span
+                                  class="RideCapacity__busCapacityText___xGKoW"
+                                  title="Presque complet">Presque complet</span></div>
+                              </div>
+                              <div *ngIf="trip['available']['seats']>= 50 && trip['available']['seats'] <= 100"
+                                   class="SearchResult__capacity___di8HI">
+                                <div class="RideCapacity__busCapacity___VoHUl RideCapacity__hasLabel___ekPDc"><span
+                                  class="hcr-icon-4-1-3 hcr-icon--size-4-4-1-3 RideCapacity__iconCapacity___mjkiC"><svg
+                                  class="hcr-svg-capacity-one" role="img" viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"><title>Presque vide</title><path
+                                  d="M12 8a2 2 0 100-4 2 2 0 000 4zm0-3a1 1 0 110 2 1 1 0 010-2zm0 4a3 3 0 00-3 3v2.4a.6.6 0 00.6.6h.4v4.4a.6.6 0 00.6.6h2.8a.6.6 0 00.6-.6V15h.4a.6.6 0 00.6-.6V12a3 3 0 00-3-3zm2 5h-1v5h-2v-5h-1v-2a2 2 0 014 0v2zM3 6a2 2 0 114 0 2 2 0 01-4 0zm5 6v2.4a.6.6 0 01-.6.6H7v4.4a.6.6 0 01-.6.6H3.6a.6.6 0 01-.6-.6V15h-.4a.6.6 0 01-.6-.6V12a3 3 0 016 0zm11-4a2 2 0 100-4 2 2 0 000 4zm0-3a1 1 0 110 2 1 1 0 010-2zm0 4a3 3 0 00-3 3v2.4a.6.6 0 00.6.6h.4v4.4a.6.6 0 00.6.6h2.8a.6.6 0 00.6-.6V15h.4a.6.6 0 00.6-.6V12a3 3 0 00-3-3zm2 5h-1v5h-2v-5h-1v-2a2 2 0 014 0v2z"></path></svg></span><span
+                                  class="RideCapacity__busCapacityText___xGKoW" title="Presque vide">Presque vide</span>
+                                </div>
+                              </div>
+                              <div class="SearchResult__usps___xQu9R">
+                                <div class="Usps__uspIconContainers___LGw3v" data-e2e="search-results-amenities"
+                                     role="none"><span class="Tooltip__wrap____7uQm "><button
+                                  class="Tooltip__trigger___ZJcA8 PlainButton__btn___Dl2ZR" type="button"><span
+                                  class="hcr-icon-4-1-3 Usps__icon___Tez9X"
+                                  data-e2e="search-results-amenities-icon search-results-amenities-icon-WIFI"><svg
+                                  class="hcr-svg-wifi" role="img" viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"><title>Wi-Fi gratuit</title><path
+                                  d="M10.29 16.04a2.43 2.43 0 103.42 3.43 2.43 2.43 0 00-3.42-3.43zm2.71 2.7a1.4 1.4 0 01-1.89.1 1.41 1.41 0 111.9-.1H13zm8.85-10.12a.5.5 0 01-.71 0A12.83 12.83 0 0012 4.84a12.83 12.83 0 00-9.14 3.78.52.52 0 01-.71 0 .5.5 0 010-.72 13.95 13.95 0 0119.7 0 .51.51 0 010 .72zm-5.42 4.7a.51.51 0 010 .72.53.53 0 01-.72 0 5.25 5.25 0 00-7.42 0 .5.5 0 01-.72 0 .51.51 0 010-.71 6.27 6.27 0 018.86 0zm2.71-2.7a.51.51 0 010 .7.52.52 0 01-.72 0 9.02 9.02 0 00-9.9-1.96 9.01 9.01 0 00-2.94 1.97.5.5 0 11-.72-.72 10.11 10.11 0 0114.28 0z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3 Usps__icon___Tez9X"
+                                  data-e2e="search-results-amenities-icon search-results-amenities-icon-POWER_SOCKETS"><svg
+                                  class="hcr-svg-socket" role="img" viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"><title>Prises électriques</title><path
+                                  d="M2.72 22.01L2 21.28l4.09-4.1a7.16 7.16 0 01.34-9.68l2.35-2.34a1.93 1.93 0 012.71 0l.9.9 3.9-3.9a.52.52 0 01.73.74L13.1 6.8l4.1 4.09 3.89-3.89a.53.53 0 01.74 0 .52.52 0 010 .74l-3.89 3.89.9.9a1.93 1.93 0 010 2.71l-2.38 2.38a7.06 7.06 0 01-9.66.32L2.72 22zm7.4-16.38a.87.87 0 00-.62.26L7.16 8.23a6.1 6.1 0 008.57 8.64l2.38-2.37a.88.88 0 000-1.25L10.75 5.9a.88.88 0 00-.62-.26z"></path></svg></span><span
+                                  class="hcr-icon-4-1-3 Usps__icon___Tez9X"
+                                  data-e2e="search-results-amenities-icon search-results-amenities-icon-DISINFECTED"><svg
+                                  class="hcr-svg-anti-virus" role="img" viewBox="0 0 24 24"
+                                  xmlns="http://www.w3.org/2000/svg"><title>Désinfecté régulièrement</title><path
+                                  d="M12 20.15c.27.16.56.3.86.42l-.03.04c-.73.46-1.49.88-2.27 1.27a1.2 1.2 0 01-1.06 0C7.74 21 2 17.9 2 14.04V3.71a.37.37 0 01.49-.35A7.78 7.78 0 009.8 2.08a.37.37 0 01.47 0 7.77 7.77 0 007.43 1.26.37.37 0 01.38.37v6.13c-.28-.15-.57-.3-.86-.4a1.5 1.5 0 00-.14-2.02V4.54a8.8 8.8 0 01-7.04-1.38A8.8 8.8 0 013 4.54v9.51c0 2.6 3.59 5.28 6.94 6.93a.2.2 0 00.19 0l.05-.03a1.47 1.47 0 001.42-.39l.4-.4zM13.5 15a1 1 0 100 2 1 1 0 000-2zm8.5-1v2a.5.5 0 01-1 0v-.5h-1.05c-.1.97-.48 1.9-1.1 2.65l1 1a.5.5 0 11-.7.7l-1-1c-.76.62-1.68 1-2.65 1.1V21h.5a.5.5 0 010 1h-2a.5.5 0 010-1h.5v-1.05c-.97-.1-1.9-.48-2.65-1.1l-1 1a.5.5 0 01-.7-.7l1-1c-.62-.76-1-1.68-1.1-2.65H9v.5a.5.5 0 01-1 0v-2a.5.5 0 011 0v.5h1.05c.1-.97.48-1.9 1.1-2.65l-1-1a.5.5 0 11.7-.7l1 1c.76-.62 1.68-1 2.65-1.1V9H14a.5.5 0 010-1h2a.5.5 0 010 1h-.5v1.05c.97.1 1.9.48 2.65 1.1l1-1a.5.5 0 11.7.7l-1 1c.62.76 1 1.68 1.1 2.65H21V14a.5.5 0 011 0zm-3 1a4 4 0 10-8 0 4 4 0 008 0zm-2.5 0a.5.5 0 100 1 .5.5 0 000-1zM15 12a.5.5 0 100 1 .5.5 0 000-1z"></path></svg></span></button></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

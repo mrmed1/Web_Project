@@ -20,13 +20,11 @@ export class SearchService {
     return  this.http.get('https://global.api-dev.flixbus.com/public/v1/network.json',{ headers:headers});
 
   }
-  SearchTrip(idfrom: number,idTo:number,adults:number,date:string,bikes:number,children:number): Observable<any>
+  SearchTrip(idfrom: number,idTo:number,date,adults,children,bikes): Observable<any>
   {
     let headers = new HttpHeaders();
     headers = headers.set('X-API-Authentication','DEV_TEST_TOKEN_STAGING');
-    console.log( 'https://global.api-dev.flixbus.com/public/v1/trip/search.json?search_by=cities&from='+idfrom+'&to='+idTo+'&departure_date='+date+'&adult='+adults+'&bikes='+bikes+'&children='+children);
-    //return this.http.get('https://global.api-dev.flixbus.com/public/v1/trip/search.json?'+'search_by="cities&from='+idfrom+'&to='+idTo+'&departure_date=29.04.2022'+'&adults=1'+'&children=0'+'&bikes=0');
-    return this.http.get('https://global.api-dev.flixbus.com/public/v1/trip/search.json?search_by=cities&from='+idfrom+'&to='+idTo+'&departure_date='+date+'&adult='+adults+'&bikes='+bikes+'&children='+children,{ headers:headers});
+    return this.http.get('https://global.api-dev.flixbus.com/public/v1/trip/search.json?search_by=cities&from='+idfrom+'&to='+idTo+'&departure_date='+date+'&adult='+adults+'&children='+children+'&bikes='+bikes,{ headers:headers});
 
   }
 }

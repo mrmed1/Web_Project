@@ -12,7 +12,7 @@
                 <div class="_1ueVz">
                   <div class="_3lBq9 smhc-radio" data-e2e="one-way-radio-button"><input
                     id="search-mask-trip-mode-oneway-toggle" type="radio"
-                    class="smhc-radio__input" checked="" name="radiotype"
+                    class="smhc-radio__input" [checked]="r1" name="radiotype"
                     value="Aller-simple" (change)="setType(1)"><label class="smhc-radio__label"
                                                 for="search-mask-trip-mode-oneway-toggle">Aller simple
                   </label>
@@ -20,7 +20,7 @@
                   <div class="_3lBq9 smhc-radio" data-e2e="round-trip-radio-button"><input
                     id="search-mask-trip-mode-roundtrip-toggle" type="radio"
                     name="radiotype"
-                    class="smhc-radio__input" value="Aller-retour" (change)="setType(2)"><label
+                    class="smhc-radio__input" [checked]="r2" value="Aller-retour" (change)="setType(2)"><label
                     class="smhc-radio__label"
                     for="search-mask-trip-mode-roundtrip-toggle" >Aller-retour</label>
                   </div>
@@ -227,10 +227,10 @@
                                 </div>
 
                                 <div class="flix-quantity__picker"
-                                     style="margin-left: 40%;">
+                                     style="margin-left: 50%;">
                                   <button type="button" id="moinsadulte"
                                           class="flix-btn flix-btn--square flix-quantity__button"
-                                          style="height: auto;min-width: 83px"
+                                          style="height: auto;min-width: 50px"
                                           aria-controls="quantity-simple"
                                           title="Remove"
                                           (click)=" Remove(1)">
@@ -247,7 +247,7 @@
                                   />
                                   <button type="button" id="plusadulte"
                                           class="flix-btn flix-btn--square flix-quantity__button"
-                                          style="height: auto;min-width: 83px"
+                                          style="height: auto;min-width: 50px"
                                           aria-controls="quantity-simple"
                                           title="Add" (click)="Add(1)">
                                     <span class="flix-sr-only">Add</span>
@@ -265,10 +265,10 @@
                                 </div>
 
                                 <div class="flix-quantity__picker"
-                                     style="margin-left: 40%;">
+                                     style="margin-left: 50%;">
                                   <button type="button" id="moinsenfant"
                                           class="flix-btn flix-btn--square flix-quantity__button"
-                                          style="height: auto;min-width: 83px"
+                                          style="height: auto;min-width: 50px"
                                           aria-controls="quantity-simple"
                                           title="Remove"
                                           (click)=" Remove(2)">
@@ -283,7 +283,7 @@
                                          value="0"/>
                                   <button type="button" id="plusenfant"
                                           class="flix-btn flix-btn--square flix-quantity__button"
-                                          style="height: auto;min-width: 83px"
+                                          style="height: auto;min-width: 50px"
                                           aria-controls="quantity-simple"
                                           title="Add"
                                           (click)="Add(2)">
@@ -303,10 +303,10 @@
                                 </div>
 
                                 <div class="flix-quantity__picker"
-                                     style="margin-left: 40%;">
+                                     style="margin-left: 50%;">
                                   <button type="button" id="moinsvelo"
                                           class="flix-btn flix-btn--square flix-quantity__button"
-                                          style="height: 44px;margin-top: 22px;min-width: 83px"
+                                          style="height: 44px;margin-top: 22px;min-width: 50px"
                                           aria-controls="quantity-simple"
                                           title="Remove"
                                   (click)=" Remove(3)">
@@ -320,7 +320,7 @@
                                          value="0" min="0" />
                                   <button type="button" id="plusvelo"
                                           class="flix-btn flix-btn--square flix-quantity__button"
-                                          style="height: 44px;margin-top: 22px; min-width: 83px"
+                                          style="height: 44px;margin-top: 22px; min-width: 50px"
                                           aria-controls="quantity-simple"
                                           title="Add"
                                           (click)="Add(3)">
