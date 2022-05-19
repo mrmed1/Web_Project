@@ -42,6 +42,7 @@ export class ModalPaiementComponent implements OnInit {
     this.flixbusService.startpaiement();
    this.flixbusService.getTicket().subscribe(
      (value:any) => {
+       console.log("reservation")
        this.isShow = true;
        this.show = false;
        localStorage.setItem("invoice_link",value["order"]["invoice_link"])

@@ -238,11 +238,12 @@ export class FlixbusService {
     )
   }
   getTicket(){
+    console.log( localStorage.getItem("order_id") )
+    console.log( this.urlv2 + "/orders/" + localStorage.getItem("order_id") + "/info.json?download_hash=" + localStorage.getItem('download_hash' ))
     return this.http.get(this.urlv2 + "/orders/" + localStorage.getItem("order_id") + "/info.json?download_hash=" + localStorage.getItem('download_hash'),{
       headers: new HttpHeaders()
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .set('Access-Control-Allow-Origin', '*')
-        .set('X-API-Session', String(this.token))
         .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
     })
   }
