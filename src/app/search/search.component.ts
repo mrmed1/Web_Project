@@ -29,6 +29,7 @@ export class SearchComponent implements OnInit {
   displayC2 = "display: none;";
   hidden = "display: none;";
   testcarte = false;
+  classimg = "imgaccueil"
 
   listcities: Array<Cities> = [];
   lists: any[] = [];
@@ -55,6 +56,7 @@ export class SearchComponent implements OnInit {
   searchResults: any[] = ["ahmed", "yazid", "jalel", "nnnnn"];
   r1: boolean = true;
   r2: boolean = false;
+  dispimg: boolean = false;
 
   constructor(public flixbusService:FlixbusService,private fb: FormBuilder, private searchService: SearchService, private router: Router) {
 
@@ -229,6 +231,8 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.flixbusService.authenticate();
     if (this.router.url == "/list") {
+      this.dispimg = true
+      this.classimg ="imglist"
       this.Depart.setValue(localStorage.getItem("depart"))
       this.Destination.setValue(localStorage.getItem("destination"))
       this.Adult.setValue(Number(localStorage.getItem("adult")))

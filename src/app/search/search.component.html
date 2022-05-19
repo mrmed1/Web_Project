@@ -1,6 +1,74 @@
-<form method="post" id="myForm" (ngSubmit)="onSubmit()" [formGroup]="formGroup">
 
-  <div class="col-xl-12 flix-box" style="max-width: none">
+<div>
+
+    <div class="hcr-theme-default">
+
+      <header class="hcr-header-3-0-0 hcr-header--unfixed-3-0-0 header-module--header--1SiOw">
+        <div class="hcr-header__inner-3-0-0">
+          <button class="hcr-header-nav-toggle-3-0-0" type="button"><span aria-hidden="true" class="hcr-icon-3-0-0"><svg
+            class="hcr-svg-burger" role="img" viewBox="0 0 1000 1000"
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path
+            d="M916.7 500A20.8 20.8 0 0 1 895.8 520.8H104.2A20.8 20.8 0 0 1 104.2 479.2H895.8A20.8 20.8 0 0 1 916.7 500ZM104.2 270.8H895.8A20.8 20.8 0 0 0 895.8 229.2H104.2A20.8 20.8 0 0 0 104.2 270.8ZM895.8 729.2H104.2A20.8 20.8 0 0 0 104.2 770.8H895.8A20.8 20.8 0 0 0 895.8 729.2Z"></path></svg></span>
+          </button>
+          <div class="hcr-header-brand-3-0-0"><a class="hcr-header-brand__link-3-0-0" href="/"><img
+            alt="FlixBus" class="hcr-header-brand__img-3-0-0"
+            src="https://cdn-cf.cms.flixbus.com/drupal-assets/logos/flixbus.svg"></a></div>
+          <div class="hcr-header-navbar-3-0-0">
+            <div class="hcr-header-nav-wrapper-3-0-0">
+
+              <div class="hcr-header-widgets-3-0-0 hcr-header-widgets--mobile-3-0-0">
+                <nav>
+                  <ul class="hcr-header-nav-3-0-0 languageSwitcher-module--list--2gym4">
+                    <li class="hcr-header-nav__item-3-0-0 hcr-header-nav__item--has-subnav-3-0-0"><span
+                      aria-expanded="false" class="hcr-header-nav__link-3-0-0 hcr-header-nav__link--has-subnav" role="button"
+                      tabindex="0"><span class="hcr-header-nav__text"><span><img
+                      alt="Français flag"
+                      class="languageSwitcher-module--flag--ZleNG languageSwitcher-module--borderDropdownWhite--1ZYhl lazyload fade" data-expand="-10"
+                      data-src="https://cdn-cf.cms.flixbus.com/drupal-assets/language-icons/flags--fr.svg"
+                      src=""><div>Français</div></span></span></span>
+                      <div></div>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+
+          </div>
+          <div class="hcr-header-widgets-3-0-0 hcr-header-widgets--sticky-3-0-0">
+            <nav>
+              <ul
+                class="hcr-header-nav-3-0-0 languageSwitcher-module--list--2gym4 languageSwitcher-module--hiddenMd--3LSZo">
+                <li class="hcr-header-nav__item-3-0-0 hcr-header-nav__item--has-subnav-3-0-0"><span
+                  aria-expanded="false" class="hcr-header-nav__link-3-0-0 hcr-header-nav__link--has-subnav" role="button"
+                  tabindex="0"><span class="hcr-header-nav__text"><span><img
+                  alt="Français flag"
+                  class="languageSwitcher-module--flag--ZleNG languageSwitcher-module--borderDropdownWhite--1ZYhl fade lazyloaded" data-expand="-10"
+                  data-src="https://cdn-cf.cms.flixbus.com/drupal-assets/language-icons/flags--fr.svg"
+                  src="https://cdn-cf.cms.flixbus.com/drupal-assets/language-icons/flags--fr.svg"><div>Français</div></span></span></span>
+                  <div></div>
+                </li>
+              </ul>
+            </nav>
+            <div class="hcr-header-user-widget-3-0-0"><a class="hcr-avatar-3-0-0 hcr-header-user-widget__picture"
+                                                         href="https://shop.flixbus.fr/user/login">
+              <svg class="hcr-svg-profile" style="fill:white" viewBox="0 0 1000 1000"
+                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path
+                  d="M500 208.3A136.5 136.5 0 0 0 375.5 354.2 136.5 136.5 0 0 0 500 499.7 136.5 136.5 0 0 0 624.4 353.9 136.5 136.5 0 0 0 500 208.3ZM500 83.3A416.7 416.7 0 0 0 208.3 797.3H208.3A417.4 417.4 0 0 0 250 832.8H250A416.7 416.7 0 1 0 500 83.3ZM786 742A234.4 234.4 0 0 0 636.5 531.7 36.9 36.9 0 0 0 623.3 529.2 38.3 38.3 0 0 0 599.3 537.8 159.3 159.3 0 0 1 397 537.8 38.3 38.3 0 0 0 373 529.5 36.2 36.2 0 0 0 359.8 531.9 238.1 238.1 0 0 0 209.6 736.8 375 375 0 1 1 786 742Z"></path>
+              </svg>
+            </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+    </div>
+  </div>
+<img src="https://cdn-cf.cms.flixbus.com/drupal-assets/2021-10/desktop-flix-hero-q4-2021.jpg" [hidden]="dispimg" >
+
+<form (ngSubmit)="onSubmit()" [formGroup]="formGroup" id="myForm" method="post">
+
+  <div class="col-xl-12 flix-box" [ngClass]=classimg>
     <div class="card mb-4">
       <div class="card-header">Bus</div>
       <div class="card-body" style="margin-left: 15px">
@@ -11,21 +79,22 @@
 
                 <div class="_1ueVz">
                   <div class="_3lBq9 smhc-radio" data-e2e="one-way-radio-button"><input
-                    id="search-mask-trip-mode-oneway-toggle" type="radio"
-                    class="smhc-radio__input" [checked]="r1" name="radiotype"
-                    value="Aller-simple" (change)="setType(1)"><label class="smhc-radio__label"
-                                                for="search-mask-trip-mode-oneway-toggle">Aller simple
+                    (change)="setType(1)" [checked]="r1"
+                    class="smhc-radio__input" id="search-mask-trip-mode-oneway-toggle" name="radiotype"
+                    type="radio" value="Aller-simple"><label class="smhc-radio__label"
+                                                             for="search-mask-trip-mode-oneway-toggle">Aller
+                    simple
                   </label>
                   </div>
                   <div class="_3lBq9 smhc-radio" data-e2e="round-trip-radio-button"><input
-                    id="search-mask-trip-mode-roundtrip-toggle" type="radio"
-                    name="radiotype"
-                    class="smhc-radio__input" [checked]="r2" value="Aller-retour" (change)="setType(2)"><label
+                    (change)="setType(2)" [checked]="r2"
+                    class="smhc-radio__input"
+                    id="search-mask-trip-mode-roundtrip-toggle" name="radiotype" type="radio" value="Aller-retour"><label
                     class="smhc-radio__label"
-                    for="search-mask-trip-mode-roundtrip-toggle" >Aller-retour</label>
+                    for="search-mask-trip-mode-roundtrip-toggle">Aller-retour</label>
                   </div>
                 </div>
-                <div class="_2WFAL" >
+                <div class="_2WFAL">
                   <div class="_3fBZP">
                     <div class="_1slnN" data-e2e="departure-city-input-field">
                       <div class="_2bvVl">
@@ -35,23 +104,23 @@
 
                             (click)="clearDepart()"
                             (focusout)="setDepart()"
-                            (keyup)="searchOnKeyUp($event)"  [matAutocomplete]="auto"
+                            (keyup)="searchOnKeyUp($event)" [matAutocomplete]="auto"
                             class="form-control smhc-input__field "
                             formControlName="Depart"
                             id="Depart"
 
 
                             name="depart"
-                            placeholder="Paris" spellcheck="false" tabindex="0" >
+                            placeholder="Paris" spellcheck="false" tabindex="0">
 
-                            <div role="presentation" class="_1ENCB"><i
+                            <div class="_1ENCB" role="presentation"><i
                               class="_1k7Pt flix-icon flix-icon-pin-solid"></i>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <button type="button" class="_3dr60 _2puHn paWO9"
-                              (click)="switchText()">
+                      <button (click)="switchText()" class="_3dr60 _2puHn paWO9"
+                              type="button">
                         <i class="flix-btn__icon flix-icon flix-icon-switch-vertical"
                         ></i>
                       </button>
@@ -63,22 +132,22 @@
                         class="smhc-label smhc-input__label _2SYcx _2d7OV"><span>a :</span></label>
                         <div class="smhc-input hWzho _3XtvC"><input
 
+                          (click)="clearDestination()"
+                          (focus)="loadrs()"
+                          (focusout)="setDestination()"
+                          (keyup)="searchOnKeyUp($event)"
+
+
+                          [matAutocomplete]="auto" autocomplete="random-string" autocorrect="off"
                           class="form-control smhc-input__field "
                           formControlName="Destination"
-                          (click)="clearDestination()"
-                          (focusout)="setDestination()"
-
-
-                          (focus)="loadrs()"  (keyup)="searchOnKeyUp($event)"  [matAutocomplete]="auto"
                           id="Destination"
                           name="inputTo"
                           placeholder="Lyon"
-                          tabindex="0"
-                          autocomplete="random-string"
-                          autocorrect="off"
                           spellcheck="false"
-                          >
-                          <div role="presentation" class="_1ENCB"><i
+                          tabindex="0"
+                        >
+                          <div class="_1ENCB" role="presentation"><i
                             class="_1k7Pt flix-icon flix-icon-pin-solid"></i>
                           </div>
                         </div>
@@ -94,24 +163,23 @@
                 </mat-autocomplete>
 
 
-
-                <div class="_3pecu vjsUt " >
+                <div class="_3pecu vjsUt ">
                   <div [ngClass]=calsscalendar>
                     <div class="_1slnN" data-e2e="departure-city-input-field">
                       <div class="_2bvVl">
                         <div class="smhc-control"><label
                           class="smhc-label smhc-input__label _2SYcx _2d7OV"><span> Départ :</span></label>
                           <div class="smhc-input hWzho _3XtvC "><input
-                            name="CalenDepart"
-                            type="text"
-                            id="CalenDepart"
-                            class="smhc-input__field hWzho "
-                            formControlName="dateFrom"
-                            [min]="minDate" [max]="maxDate"
-                            readonly (click)="picker1.open()" (focus)="picker1.open()"   [matDatepicker]="picker1"
-                            style="margin-left: -4px; padding-left:40px "/>
+                            (click)="picker1.open()"
+                            (focus)="picker1.open()"
+                            [matDatepicker]="picker1"
+                            [max]="maxDate"
+                            [min]="minDate"
+                            class="smhc-input__field hWzho " formControlName="dateFrom"
+                            id="CalenDepart" name="CalenDepart" readonly style="margin-left: -4px; padding-left:40px "
+                            type="text"/>
 
-                            <div role="presentation" class="_1ENCB"><i
+                            <div class="_1ENCB" role="presentation"><i
                               class="_1k7Pt flix-icon flix-icon-calendar-solid"></i>
                             </div>
                           </div>
@@ -120,20 +188,20 @@
 
                     </div>
                   </div>
-                  <div class="_1ESlq calendarsmall" data-e2e="arrival-city-input-field"  style="{{displayC2}}">
+                  <div class="_1ESlq calendarsmall" data-e2e="arrival-city-input-field" style="{{displayC2}}">
                     <div class="_2bvVl">
                       <div class="smhc-control"><label
                         class="smhc-label smhc-input__label _2SYcx _2d7OV"><span>Retour:</span></label>
                         <div class="smhc-input hWzho _3XtvC">
                           <input
-                            name="CalenRetour"
-                            type="text"
-                            id="CalenRetour"
+                            (click)="picker2.open()"
+                            (focus)="picker2.open()"
+                            [matDatepicker]="picker2"
                             class="smhc-input__field hWzho"
                             formControlName="toDate"
-                            readonly (click)="picker2.open()" (focus)="picker2.open()"   [matDatepicker]="picker2"
-                            style="margin-left: -4px"/>
-                          <div role="presentation" class="_1ENCB"><i
+                            id="CalenRetour" name="CalenRetour" readonly style="margin-left: -4px"
+                            type="text"/>
+                          <div class="_1ENCB" role="presentation"><i
                             class="_1k7Pt flix-icon flix-icon-calendar-solid"></i>
                           </div>
                         </div>
@@ -142,8 +210,6 @@
                     </div>
                   </div>
                 </div>
-
-
 
 
                 <!--
@@ -181,42 +247,43 @@
 
                                -->
 
-                <div data-e2e="products-input-field" class="_2sebG _2yYEF">
+                <div class="_2sebG _2yYEF" data-e2e="products-input-field">
                   <div class="_3ECRE">
                     <div class="_1BI_i">
                       <div class="smhc-control"><label
                         class="smhc-label smhc-input__label _2SYcx _2d7OV"><span><label
                         class="smhc-label smhc-input__label _2SYcx"><span>Passagers/Vélos </span></label></span></label>
 
-                        <div class="smhc-input hWzho _3XtvC _1sS9N flix-dropdown flix-dropdown--left flix-dropdown--active js-flix-dropdown--left">
-                          <input class="smhc-input__field"
-                                 id="passagersvelo"
-                                 readonly
+                        <div
+                          class="smhc-input hWzho _3XtvC _1sS9N flix-dropdown flix-dropdown--left flix-dropdown--active js-flix-dropdown--left">
+                          <input (click)="affichecarte()"
                                  *ngIf="Children?.value===0"
+                                 aria-controls="kebab-dropdown-menu"
                                  aria-label="Options"
+                                 class="smhc-input__field"
                                  class="flix-btn flix-btn--has-icon flix-btn--square flix-btn--link flix-space-xs-top"
                                  data-toggle="js-flix-dropdown--left"
                                  data-toggle-class="flix-dropdown--active"
-                                 aria-controls="kebab-dropdown-menu"
-
-                                 value="{{Adult?.value}} Adulte , {{Bikes?.value}} Velo "
-                                 (click)="affichecarte()"
-                                >
-                          <input class="smhc-input__field"
                                  id="passagersvelo"
+
                                  readonly
+                                 value="{{Adult?.value}} Adulte , {{Bikes?.value}} Velo "
+                          >
+                          <input (click)="affichecarte()"
+
                                  *ngIf="Children?.value>0"
+                                 aria-controls="kebab-dropdown-menu"
                                  aria-label="Options"
+                                 class="smhc-input__field"
                                  class="flix-btn flix-btn--has-icon flix-btn--square flix-btn--link flix-space-xs-top"
                                  data-toggle="js-flix-dropdown--left"
                                  data-toggle-class="flix-dropdown--active"
-                                 aria-controls="kebab-dropdown-menu"
 
+                                 readonly
                                  value="{{Adult?.value}} Adulte  , {{Children?.value}} Enfants {{Bikes?.value}} Velo "
-                                 (click)="affichecarte()"
                           >
                           <div>
-                            <ul id="kebab-dropdown-menu" class="flix-dropdown__items"
+                            <ul class="flix-dropdown__items" id="kebab-dropdown-menu"
                                 style="min-width: 360px; min-height: 250px;{{hidden}}">
                               <div class="flix-quantity" style="display: flex;">
                                 <div class="_3OTlx" style="margin-left: 5px;position: absolute;">
@@ -228,28 +295,28 @@
 
                                 <div class="flix-quantity__picker"
                                      style="margin-left: 50%;">
-                                  <button type="button" id="moinsadulte"
+                                  <button (click)=" Remove(1)" aria-controls="quantity-simple"
                                           class="flix-btn flix-btn--square flix-quantity__button"
+                                          id="moinsadulte"
                                           style="height: auto;min-width: 50px"
-                                          aria-controls="quantity-simple"
                                           title="Remove"
-                                          (click)=" Remove(1)">
+                                          type="button">
                                     <span class="flix-sr-only">Remove</span>
                                   </button>
-                                  <input id="quantity-simple-adulte" type="number"
-                                         class="form-control input-card flix-quantity__input"
-                                         name="quantity-simple-adulte"
-                                         style="width: 45px;padding-left: 0px;padding-right: 0px"
-
+                                  <input class="form-control input-card flix-quantity__input" formControlName="Adult"
+                                         id="quantity-simple-adulte"
                                          min="1"
-                                         formControlName="Adult"
+                                         name="quantity-simple-adulte"
+
+                                         style="width: 45px;padding-left: 0px;padding-right: 0px"
+                                         type="number"
 
                                   />
-                                  <button type="button" id="plusadulte"
+                                  <button (click)="Add(1)" aria-controls="quantity-simple"
                                           class="flix-btn flix-btn--square flix-quantity__button"
+                                          id="plusadulte"
                                           style="height: auto;min-width: 50px"
-                                          aria-controls="quantity-simple"
-                                          title="Add" (click)="Add(1)">
+                                          title="Add" type="button">
                                     <span class="flix-sr-only">Add</span>
                                   </button>
                                 </div>
@@ -266,27 +333,27 @@
 
                                 <div class="flix-quantity__picker"
                                      style="margin-left: 50%;">
-                                  <button type="button" id="moinsenfant"
+                                  <button (click)=" Remove(2)" aria-controls="quantity-simple"
                                           class="flix-btn flix-btn--square flix-quantity__button"
+                                          id="moinsenfant"
                                           style="height: auto;min-width: 50px"
-                                          aria-controls="quantity-simple"
                                           title="Remove"
-                                          (click)=" Remove(2)">
+                                          type="button">
                                     <span class="flix-sr-only">Remove</span>
                                   </button>
-                                  <input id="quantity-simple-enfant" type="number"
-                                         class="form-control flix-quantity__input"
+                                  <input class="form-control flix-quantity__input" formControlName="Children"
+                                         id="quantity-simple-enfant"
+                                         min="0"
                                          name="quantity-simple-enfant"
                                          style="width: 45px;padding-left: 0px;padding-right: 0px"
-                                         formControlName="Children"
-                                         min="0"
+                                         type="number"
                                          value="0"/>
-                                  <button type="button" id="plusenfant"
+                                  <button (click)="Add(2)" aria-controls="quantity-simple"
                                           class="flix-btn flix-btn--square flix-quantity__button"
+                                          id="plusenfant"
                                           style="height: auto;min-width: 50px"
-                                          aria-controls="quantity-simple"
                                           title="Add"
-                                          (click)="Add(2)">
+                                          type="button">
                                     <span class="flix-sr-only">Add</span>
                                   </button>
                                 </div>
@@ -304,37 +371,36 @@
 
                                 <div class="flix-quantity__picker"
                                      style="margin-left: 50%;">
-                                  <button type="button" id="moinsvelo"
+                                  <button (click)=" Remove(3)" aria-controls="quantity-simple"
                                           class="flix-btn flix-btn--square flix-quantity__button"
+                                          id="moinsvelo"
                                           style="height: 44px;margin-top: 22px;min-width: 50px"
-                                          aria-controls="quantity-simple"
                                           title="Remove"
-                                  (click)=" Remove(3)">
+                                          type="button">
                                     <span class="flix-sr-only">Remove</span>
                                   </button>
-                                  <input id="quantity-simple-velo" type="number"
-                                         class="form-control flix-quantity__input"
+                                  <input class="form-control flix-quantity__input" formControlName="Bikes"
+                                         id="quantity-simple-velo"
+                                         min="0"
                                          name="quantity-simple-velo"
                                          style="width: 45px;padding-left: 0px;padding-right: 0px;margin-top: 19px;"
-                                         formControlName="Bikes"
-                                         value="0" min="0" />
-                                  <button type="button" id="plusvelo"
+                                         type="number" value="0"/>
+                                  <button (click)="Add(3)" aria-controls="quantity-simple"
                                           class="flix-btn flix-btn--square flix-quantity__button"
+                                          id="plusvelo"
                                           style="height: 44px;margin-top: 22px; min-width: 50px"
-                                          aria-controls="quantity-simple"
                                           title="Add"
-                                          (click)="Add(3)">
+                                          type="button">
                                     <span class="flix-sr-only">Add</span>
                                   </button>
                                 </div>
                               </div>
 
 
-
                             </ul>
                           </div>
 
-                          <div role="presentation" class="_1ENCB"><i
+                          <div class="_1ENCB" role="presentation"><i
                             class="_1k7Pt _29kQ4 flix-icon flix-icon-arrow-down"
                             onclick=""
                           ></i>
@@ -345,11 +411,11 @@
                   </div>
                 </div>
 
-                <div data-e2e="search-button" class="_2zVMF  VIFUe">
+                <div class="_2zVMF  VIFUe" data-e2e="search-button">
 
-                  <button type="submit"
-                          class="smhc-btn smhc-btn&#45;&#45;primary smhc-btn&#45;&#45;block _20QUy"
-                          id="btnrecherche"> Chercher
+                  <button class="smhc-btn smhc-btn&#45;&#45;primary smhc-btn&#45;&#45;block _20QUy"
+                          id="btnrecherche"
+                          type="submit"> Chercher
                   </button>
 
                 </div>
@@ -366,6 +432,7 @@
 
 </form>
 
-<mat-datepicker  #picker2> </mat-datepicker>
+<mat-datepicker #picker2></mat-datepicker>
 
-<mat-datepicker  #picker1> </mat-datepicker>
+<mat-datepicker #picker1></mat-datepicker>
+
