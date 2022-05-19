@@ -12,7 +12,7 @@
                 <div class="_1ueVz">
                   <div class="_3lBq9 smhc-radio" data-e2e="one-way-radio-button"><input
                     id="search-mask-trip-mode-oneway-toggle" type="radio"
-                    class="smhc-radio__input" checked="" name="radiotype"
+                    class="smhc-radio__input" [checked]="r1" name="radiotype"
                     value="Aller-simple" (change)="setType(1)"><label class="smhc-radio__label"
                                                 for="search-mask-trip-mode-oneway-toggle">Aller simple
                   </label>
@@ -20,7 +20,7 @@
                   <div class="_3lBq9 smhc-radio" data-e2e="round-trip-radio-button"><input
                     id="search-mask-trip-mode-roundtrip-toggle" type="radio"
                     name="radiotype"
-                    class="smhc-radio__input" value="Aller-retour" (change)="setType(2)"><label
+                    class="smhc-radio__input" [checked]="r2" value="Aller-retour" (change)="setType(2)"><label
                     class="smhc-radio__label"
                     for="search-mask-trip-mode-roundtrip-toggle" >Aller-retour</label>
                   </div>

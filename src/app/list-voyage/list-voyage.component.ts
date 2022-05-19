@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-voyage',
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-voyage.component.css']
 })
 export class ListVoyageComponent implements OnInit {
-
-  constructor() { }
+  list : any
+  list2
+    constructor(private router : Router) { }
 
   ngOnInit(): void {
+
+    if(history.state.data == undefined)
+    {
+      this.list= JSON.parse(localStorage.getItem("data"));
+
+      console.log(this.list)
+    }
+    else {
+      this.list = history.state.data;console.log(this.list)
+    }
+
+
   }
 
+  tocheckout(uid) {
+    localStorage.setItem("uid",uid)
+    this.router.navigateByUrl("/checkout")
+  }
 }
