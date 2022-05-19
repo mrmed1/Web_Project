@@ -12,6 +12,7 @@ export class ListVoyageComponent implements OnInit {
     constructor(private router : Router) { }
 
   ngOnInit(): void {
+    localStorage.setItem("uid","0")
 
     if(history.state.data == undefined)
     {
@@ -27,7 +28,9 @@ export class ListVoyageComponent implements OnInit {
   }
 
   tocheckout(uid) {
+
     localStorage.setItem("uid",uid)
+
     this.router.navigateByUrl("/checkout")
   }
 }

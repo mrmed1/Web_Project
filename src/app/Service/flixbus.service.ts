@@ -90,6 +90,8 @@ export class FlixbusService {
       },
       error => console.log(error)
     );
+
+
   }
 
   getancillary() {

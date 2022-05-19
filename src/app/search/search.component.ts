@@ -13,6 +13,7 @@ import {SearchService} from "../Service/search.service";
 import {Cities} from "../Model/cities";
 import {Router} from "@angular/router";
 import {stringify} from "@angular/compiler/src/util";
+import {FlixbusService} from "../Service/flixbus.service";
 
 @Component({
   selector: 'app-search',
@@ -55,7 +56,7 @@ export class SearchComponent implements OnInit {
   r1: boolean = true;
   r2: boolean = false;
 
-  constructor(private fb: FormBuilder, private searchService: SearchService, private router: Router) {
+  constructor(public flixbusService:FlixbusService,private fb: FormBuilder, private searchService: SearchService, private router: Router) {
 
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
@@ -226,7 +227,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.flixbusService.authenticate();
     if (this.router.url == "/list") {
       this.Depart.setValue(localStorage.getItem("depart"))
       this.Destination.setValue(localStorage.getItem("destination"))
@@ -281,8 +282,8 @@ export class SearchComponent implements OnInit {
 
   }
 
-  async onSubmit() {
-
+   onSubmit() {
+  console.log("onsubmit")
     let test = this.searchService.SearchTrip(this.getId(this.lists, this.Depart.value), this.getId(this.lists, this.Destination.value), this.getdate(), this.Adult.value, this.Children.value, this.Bikes.value).subscribe
     (
       (data) => {
@@ -295,7 +296,12 @@ export class SearchComponent implements OnInit {
         localStorage.setItem('datefrom', this.dateFrom.value)
         localStorage.setItem('radio', this.type)
         localStorage.setItem("data", JSON.stringify(data));
+        console.log(data)
+        if (this.router.url == "/list")
+        window.location.reload();
+        else
         this.router.navigate(['/list'], {state: data});
+
         console.log(data);
       },
       (error) => console.log(error)
