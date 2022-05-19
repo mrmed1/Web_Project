@@ -27,4 +27,21 @@ export class SearchService {
     return this.http.get('https://global.api-dev.flixbus.com/public/v1/trip/search.json?search_by=cities&from='+idfrom+'&to='+idTo+'&departure_date='+date+'&adult='+adults+'&children='+children+'&bikes='+bikes,{ headers:headers});
 
   }
+  getdate(datev:any) {
+    console.log("date",datev)
+    let date;
+    let dateValue;
+    date =new Date(datev);
+    date.day;
+
+
+    let month = "x";
+    if ((date.getMonth() + 1) < 10) {
+      month = "0" + (date.getMonth() + 1);
+
+    } else
+      month = (date.getMonth() + 1)
+    dateValue = date.getDate() + '.' + month + '.' + date.getFullYear()
+    return dateValue;
+  }
 }

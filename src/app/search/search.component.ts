@@ -86,6 +86,9 @@ export class SearchComponent implements OnInit {
   get dateFrom() {
     return this.formGroup.get('dateFrom');
   }
+  get Todate() {
+    return this.formGroup.get('toDate');
+  }
 
   switchText() {
     let aux = this.formGroup.get('Depart')?.value;
@@ -229,8 +232,19 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.flixbusService.authenticate();
     if (this.router.url == "/list") {
-      this.Depart.setValue(localStorage.getItem("depart"))
-      this.Destination.setValue(localStorage.getItem("destination"))
+      console.log("statu",localStorage.getItem("statu"))
+      if(localStorage.getItem("statu")=="Back")
+      {
+        this.Depart.setValue(localStorage.getItem("destination"))
+        this.Destination.setValue(localStorage.getItem("depart"))
+
+
+      }else
+      {  this.Depart.setValue(localStorage.getItem("depart"))
+        this.Destination.setValue(localStorage.getItem("destination"))
+      }
+
+      this.Todate.setValue(new Date(localStorage.getItem("toDate")))
       this.Adult.setValue(Number(localStorage.getItem("adult")))
       this.Children.setValue(Number(localStorage.getItem("children")))
       this.Bikes.setValue(Number(localStorage.getItem("bikes")))
@@ -288,15 +302,22 @@ export class SearchComponent implements OnInit {
     (
       (data) => {
         console.log("done");
+        localStorage.setItem('departId', this.getId(this.lists, this.Depart.value));
+        localStorage.setItem('destinationId', this.getId(this.lists, this.Destination.value));
         localStorage.setItem("adult", this.Adult.value);
         localStorage.setItem("children", this.Children.value);
         localStorage.setItem('bikes', this.Bikes.value)
         localStorage.setItem('depart', this.Depart.value);
         localStorage.setItem('destination', this.Destination.value)
         localStorage.setItem('datefrom', this.dateFrom.value)
+
         localStorage.setItem('radio', this.type)
         localStorage.setItem("data", JSON.stringify(data));
         console.log(data)
+        if(this.type=="2")
+        { localStorage.setItem('toDate', this.Todate.value)
+          localStorage.setItem("statu","Go")
+        }
         if (this.router.url == "/list")
         window.location.reload();
         else
@@ -376,6 +397,7 @@ export class SearchComponent implements OnInit {
     dateValue = date.getDate() + '.' + month + '.' + date.getFullYear()
     return dateValue;
   }
+
 }
 
 
