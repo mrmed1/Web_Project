@@ -49,8 +49,45 @@ export class FlixbusService {
 
   }
 
-  createReservation(uid: string, children: number, bikes: number, adult: number) {
+  createReservation(uid?: string,uid1?:string, children?: number, bikes?: number, adult?: number) {
 
+    if(Number(localStorage.getItem("radio")) == 2)
+    {
+      const body2 = new HttpParams()
+        .set('trip_uid', uid1)
+        .set('children', children)
+        .set('bikes', bikes)
+        .set('adult', adult)
+        .set('currency', "EUR")
+
+      return this.http.put(this.urlv1 + '/reservation/items.json',
+        body2.toString(),
+        {
+          observe: 'response',
+          headers: new HttpHeaders()
+            .set('Content-Type', 'application/x-www-form-urlencoded')
+            .set('Access-Control-Allow-Origin', '*')
+            .set('X-API-Session', String(this.token))
+            .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
+        }
+      ).subscribe(
+        (data: any) => {
+          if (data.status == 200) {
+            localStorage.setItem('reservation_token2', data.body.cart.reservation.token)
+            localStorage.setItem('id_reservation2', data.body.cart.reservation.id)
+            this.arrivalTime = (data.body.cart.items[uid].arrival.timestamp) * 1000;
+            this.departureTime = (data.body.cart.items[uid].departure.timestamp) * 1000;
+            this.from = data.body.cart.items[uid].from.name;
+            this.to = data.body.cart.items[uid].to.name;
+            this.total = data.body.cart.price.total;
+            //this.getpassengerDetails();
+          }
+
+
+        },
+        error => console.log(error)
+      );
+    }
 
     const body = new HttpParams()
       .set('trip_uid', uid)
@@ -58,9 +95,6 @@ export class FlixbusService {
       .set('bikes', bikes)
       .set('adult', adult)
       .set('currency', "EUR")
-
-    /* .set('username', username)
- .set('password', password);*/
 
 
     return this.http.put(this.urlv1 + '/reservation/items.json',
@@ -90,6 +124,10 @@ export class FlixbusService {
       },
       error => console.log(error)
     );
+
+
+
+
 
 
   }
