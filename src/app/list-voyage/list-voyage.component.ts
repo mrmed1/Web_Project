@@ -30,8 +30,8 @@ export class ListVoyageComponent implements OnInit {
 
   tocheckout(uid) {
 
-    localStorage.setItem("uid",uid)
-    if(localStorage.getItem("type")=="1")
+   // localStorage.setItem("uid",uid)
+    if(localStorage.getItem("radio")=="1")
     { localStorage.setItem("uid",uid)
       this.router.navigateByUrl("/checkout")
     }
