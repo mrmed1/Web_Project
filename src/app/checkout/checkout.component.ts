@@ -67,7 +67,7 @@ export class CheckoutComponent implements OnInit {
 
 
 
-   this.flixbusService.createReservation(String(localStorage.getItem("uid")),this.num(localStorage.getItem("children")),this.num(localStorage.getItem("bikes")),this.num(localStorage.getItem("adult")));
+   this.flixbusService.createReservation(String(localStorage.getItem("uid")),String(localStorage.getItem("uid1")),this.num(localStorage.getItem("children")),this.num(localStorage.getItem("bikes")),this.num(localStorage.getItem("adult")));
 
     this.flixbusService.getancillary();
     console.log("passengers: ", this.flixbusService.tabpassenger)

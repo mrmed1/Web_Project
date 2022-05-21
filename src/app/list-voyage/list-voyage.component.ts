@@ -10,11 +10,19 @@ import {SearchService} from "../Service/search.service";
 export class ListVoyageComponent implements OnInit {
   list : any
   list2
+  voyage2: boolean  = true;
     constructor(private searchService: SearchService,private router : Router) { }
 
   ngOnInit(): void {
     localStorage.setItem("uid","0")
-
+    if (localStorage.getItem("statu") == "Back")
+    {
+      this.voyage2 = false
+    }
+    else
+    {
+      this.voyage2 = true
+    }
     if(history.state.data == undefined)
     {
       this.list= JSON.parse(localStorage.getItem("data"));
@@ -30,8 +38,8 @@ export class ListVoyageComponent implements OnInit {
 
   tocheckout(uid) {
 
-    localStorage.setItem("uid",uid)
-    if(localStorage.getItem("type")=="1")
+
+    if(localStorage.getItem("radio")=="1")
     { localStorage.setItem("uid",uid)
       this.router.navigateByUrl("/checkout")
     }
