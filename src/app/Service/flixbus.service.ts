@@ -27,6 +27,7 @@ export class FlixbusService {
 
   total = 0;
   token: string
+  trip :any;
 
   constructor(private http: HttpClient) {
     this.urlv1 = "https://global.api-dev.flixbus.com/public/v1";
@@ -611,5 +612,19 @@ export class FlixbusService {
           .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
       })
     }
+
+
+
+  getTrip(uid)
+  {
+    return this.http.get(this.urlv1 +"/trips/"+uid+"/info.json",{
+      observe: 'response',
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Access-Control-Allow-Origin', '*')
+        .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
+    })
+
+  }
 
 }

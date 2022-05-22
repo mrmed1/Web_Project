@@ -39,6 +39,7 @@ export class CheckoutComponent implements OnInit {
   total: number =0;
   formGroup !: FormGroup;
   items: FormArray | undefined;
+
   constructor(public flixbusService:FlixbusService,
               private fb:FormBuilder,
               private dialog: MatDialog) { }

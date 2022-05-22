@@ -16,7 +16,9 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 
 import { SearchComponent } from './search/search.component';
-
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 
 import {MatFormFieldModule} from "@angular/material/form-field";
