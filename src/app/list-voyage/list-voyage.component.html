@@ -1,4 +1,70 @@
 <app-search></app-search>
+<div class="flix-box" [hidden]="voyage2"
+     style="width: 820px;position: relative;margin: 0 auto;height: 120px;  margin-top: 15px">
+
+  <table>
+    <tr>
+      <td>
+        <div class="flix-text" style="display: flex"><i
+          class="flix-icon flix-icon--sm flix-icon-checkmark-strong"
+          style="color: #00bb00"></i>
+          <p style="margin-left: 6px">Trajet de départ sélectionné</p>
+        </div>
+      </td>
+
+
+    </tr>
+    <tr style="display: flex;margin-top: -10px;">
+
+      <td>
+
+
+        <span class="flix-connection__title">  {{ departuretimestamp * 1000|date:"EEEE d MMMM y":undefined:'fr' }}   {{departuretimestamp * 1000|date:"HH:MM"}}<span
+          class="flix-connection__title-arrival"> {{arrivaltimestamp * 1000|date:"HH:MM"}} </span></span>
+
+
+
+        <div class="flix-text" style="inline-size: max-content;">
+          <span>{{departureStation}} => {{arrivalStation}} </span>
+        </div>
+      </td>
+
+      <td style="    margin-top: -10px;" id="icontype">
+        <div style="margin-left: 45%;">
+
+
+          <i class="flix-icon flix-icon--sm flix-icon-train"></i>
+          <i class="flix-icon flix-icon--sm flix-icon-bus">
+            &nbsp; </i>
+
+
+
+        </div>
+        <div class="flix-text" style="margin-left: 60px;"><p
+          style="margin-left: 70px;    display: table-cell;"> {{trip?.type}} | {{durationH}}:{{durationM}} H
+        </p></div>
+      </td>
+
+      <td id="pricebutton" style="position: absolute;right: 0;margin-top: -15px;">
+        <div style="margin-top: -10%;">
+                                <span class="flix-connection__title"
+                                      style="float: right;font-size: 22px;margin-right: 41px">{{priceTrip}} €</span>
+
+        </div>
+        <div class="flix-control">
+          <button type="button" id="suppvoyage"
+                  class="flix-btn flix-btn--tertiary" (click)=" clearTrip()">
+            Supprimer le voyage
+          </button>
+        </div>
+      </td>
+
+    <tr>
+
+
+  </table>
+
+</div>
 <div id="router">
   <div class="flix-theme-default ThemeSwitcher__wrap___DgLPS ThemeSwitcher__fullHeight___q8pfj">
     <div class="hcr-theme-default">
@@ -350,7 +416,7 @@
 
                             <div class="SearchResult__bookButtonWrap___bvz2p">
                               <div class="BookButton__wrapper___FNLt6" role="presentation">
-                                <button (click)="tocheckout(trip.uid)"
+                                <button (click)="tocheckout(trip.uid,trip.price_total_sum)"
                                   class="hcr-btn-4-1-3 hcr-btn--secondary-4-1-3 hcr-btn--block-4-1-3 SearchResult__bookButton___KC_GC BookButton__button___u6PEV BookButton__desktop___MMZ9T"
                                   data-e2e="button-reserve-trip" type="button"><span
                                   aria-label="78<sup>,99</sup>&nbsp;€"
@@ -442,5 +508,6 @@
     </div>
   </div>
 </div>
+
 
 

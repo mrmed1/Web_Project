@@ -29,6 +29,7 @@ export class SearchComponent implements OnInit {
   displayC2 = "display: none;";
   hidden = "display: none;";
   testcarte = false;
+  classimg = "imgaccueil"
 
   listcities: Array<Cities> = [];
   lists: any[] = [];
@@ -55,8 +56,9 @@ export class SearchComponent implements OnInit {
   searchResults: any[] = ["ahmed", "yazid", "jalel", "nnnnn"];
   r1: boolean = true;
   r2: boolean = false;
+  dispimg: boolean = false;
 
-  constructor(public flixbusService:FlixbusService,private fb: FormBuilder, private searchService: SearchService, private router: Router) {
+  constructor(public flixbusService: FlixbusService, private fb: FormBuilder, private searchService: SearchService, private router: Router) {
 
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
@@ -230,29 +232,37 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.flixbusService.authenticate();
     if (this.router.url == "/list") {
+
       console.log("statu",localStorage.getItem("statu"))
       if(localStorage.getItem("statu")=="Back")
-      {
+      { console.log("e9leb")
         this.Depart.setValue(localStorage.getItem("destination"))
         this.Destination.setValue(localStorage.getItem("depart"))
 
 
       }else
-      {  this.Depart.setValue(localStorage.getItem("depart"))
+      {
+        this.Depart.setValue(localStorage.getItem("depart"))
         this.Destination.setValue(localStorage.getItem("destination"))
       }
 
       this.Todate.setValue(new Date(localStorage.getItem("toDate")))
+
+      this.dispimg = true
+      this.classimg = "imglist"
+
       this.Adult.setValue(Number(localStorage.getItem("adult")))
       this.Children.setValue(Number(localStorage.getItem("children")))
       this.Bikes.setValue(Number(localStorage.getItem("bikes")))
       this.dateFrom.setValue(new Date(localStorage.getItem("datefrom")))
       this.setType(Number(localStorage.getItem("radio")))
 
+    }else {
+      localStorage.clear();
     }
-
 
 
     let arrayTemp: Cities[] = [];
@@ -296,8 +306,8 @@ export class SearchComponent implements OnInit {
 
   }
 
-   onSubmit() {
-  console.log("onsubmit")
+  onSubmit() {
+    console.log("onsubmit")
     let test = this.searchService.SearchTrip(this.getId(this.lists, this.Depart.value), this.getId(this.lists, this.Destination.value), this.getdate(), this.Adult.value, this.Children.value, this.Bikes.value).subscribe
     (
       (data) => {
@@ -310,7 +320,6 @@ export class SearchComponent implements OnInit {
         localStorage.setItem('depart', this.Depart.value);
         localStorage.setItem('destination', this.Destination.value)
         localStorage.setItem('datefrom', this.dateFrom.value)
-
         localStorage.setItem('radio', this.type)
         localStorage.setItem("data", JSON.stringify(data));
         console.log(data)
@@ -330,8 +339,6 @@ export class SearchComponent implements OnInit {
     /*
        let citiefrom: Cities[] = [];
        let DestinationCities: Cities[] = [];
-
-
        let object: {
          search_by: string; from: number; to: number;
          departure_date: Date; adult: number; children: number; bikes: number
@@ -339,13 +346,11 @@ export class SearchComponent implements OnInit {
        // @ts-ignore
        citiefrom = this.searchFromArray(this.lists, this.formGroup.get('Depart').value);
        console.log("fromaa" + this.formGroup.get('Depart')?.value);
-
        // @ts-ignore
        DestinationCities = this.searchFromArray(this.lists, this.formGroup.get('Destination').value);
        // console.log(this.lists);
        console.log("from" + this.getId(this.lists, this.formGroup.get('Depart')?.value));
        console.log("to" + this.getId(this.lists, this.formGroup.get('Destination')?.value));
-
      //  console.log(this.searchService.SearchTrip(this.getId(this.lists, this.formGroup.get('Depart')?.value), this.getId(this.lists, this.formGroup.get('Destination')?.value)));
        let test = this.searchService.SearchTrip(this.getId(this.lists, this.Depart.value), this.getId(this.lists, this.Destination.value),this.Adult.value,this.dateFrom.value,this.Children.value,this.Bikes.value).subscribe
        (
@@ -355,8 +360,6 @@ export class SearchComponent implements OnInit {
          },
          (error) => console.log(error)
        );
-
-
        /*object = {
              search_by: "cities",
              from: citiefrom[0].id,
@@ -375,7 +378,6 @@ export class SearchComponent implements OnInit {
         (error) => console.log(error)
       );
       console.log(json);
-
     } else {
     console.log("error");
     }*/
@@ -397,7 +399,4 @@ export class SearchComponent implements OnInit {
     dateValue = date.getDate() + '.' + month + '.' + date.getFullYear()
     return dateValue;
   }
-
 }
-
-
