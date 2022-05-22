@@ -1,0 +1,213 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f7f7f7;
+    background: var(--flix-secondary-bg-color, #f7f7f7)
+}
+
+
+.flix-checkout-page {
+    padding-top: 60px;
+
+}
+
+.flix-passengerdetails-fields {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -6px;
+    margin-left: -6px
+}
+
+.flix-passengerdetails-fields:last-child {
+    margin-bottom: -24px
+}
+
+.flix-passenger-input {
+    padding: 0 6px;
+    width: 100%;
+}
+
+@media (min-width: 400px) {
+    .flix-passenger-input {
+        width: 50%;
+    }
+}
+
+.flix-passenger-input-name {
+    width: 100%
+}
+
+.flix-passenger-input-100 {
+    width: 100%;
+    padding: 0 6px
+}
+
+@media (max-width: 600px) {
+    .flix-passenger-input-xs-100 {
+        width: 100%
+    }
+}
+
+.flix-passenger-input_birthdate {
+    width: 100%
+}
+
+@media (min-width: 400px) {
+    .flix-passenger-input_birthdate {
+        width: 75%
+    }
+}
+
+@media (min-width: 600px) {
+    .flix-passenger-input_birthdate {
+        width: 50%
+    }
+
+    .flix-passenger-input_birthdate > .flix-control {
+        max-width: 260px
+    }
+}
+
+.flix-tripdetails-container {
+    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid var(--flix-primary-line-color, #e1e1e1);
+    padding-top: 25px;
+    padding-bottom: 25px
+}
+
+.flix-tripdetails-container:first-child {
+    paddingTop: 0px
+}
+
+.flix-tripdetails-container:last-child {
+    padding-bottom: 0px;
+    border-bottom: 0px
+}
+
+.flix-tripdetails-overview {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 12px
+}
+
+.flix-checkout-section {
+    margin: 12px 0;
+    padding: 12px;
+    border-top: 1px solid #e1e1e1;
+    border-top: 1px solid var(--flix-primary-line-color, #e1e1e1);
+    border-bottom: 1px solid #e1e1e1;
+    border-bottom: 1px solid var(--flix-primary-line-color, #e1e1e1);
+    background: #ffffff;
+    background: var(--flix-primary-bg-color, #fff)
+}
+
+.flix-checkout-section:first-child {
+    margin-top: 0
+}
+
+@media (min-width: 600px) {
+    .flix-checkout-section {
+        border: 1px solid #e1e1e1;
+        border: 1px solid var(--flix-primary-line-color, #e1e1e1);
+        padding: 24px;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+}
+
+
+.flix-checkout-section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px
+}
+
+.flix-checkout-section-header_number {
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-right: 12px;
+    padding: 0 !important;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    color: var(--flix-primary-bg-color, #fff);
+    background: #73d700;
+    background: var(--flix-primary-ui-color, #73d700);
+    border-radius: 5px
+}
+
+.flix-checkout-section-header_label {
+    flex: 1
+}
+
+.flix-checkout-section-header_label > h2 {
+    padding: 0
+}
+
+.flix-checkout-section-header-action {
+    color: #ffad00;
+    color: var(--flix-secondary-ui-color, #ffad00);
+    font-size: 18px;
+    font-weight: normal;
+    cursor: pointer
+}
+
+
+.flix-dialog--fullscreen {
+    overflow: auto
+}
+
+
+.flix-checkout-content {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1224px;
+    width: 100%;
+    margin: auto
+}
+
+@media (min-width: 600px) {
+    .flix-checkout-content {
+        padding: 24px 12px
+    }
+}
+
+.flix-checkout-main {
+    flex: 2
+}
+
+
+.flix-radio-input > input {
+    display: block;
+    position: absolute;
+    visibility: hidden
+}
+
+.flix-checkout-checkbox-container .flix-text:last-child {
+    margin-bottom: 0
+}
+
+
+.flix-checkout-contact-input-section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -6px;
+    margin-left: -6px
+}
+
+.flix-checkout-contact-input-section:last-child {
+    margin-bottom: -24px
+}
+
+.flix-checkout-contact-input {
+    padding: 0 6px;
+    width: 100%
+}
+
+@media (min-width: 600px) {
+    .flix-checkout-contact-input {
+        width: 50%
+    }
+}
