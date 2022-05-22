@@ -6,7 +6,7 @@
     <button class="btn-dialog-close btnClose" style="margin-left: auto" mat-button color="warn" (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
   </mat-toolbar>
   <br>
-  <div>
+  <div *ngIf="localStorageItem('radio') == '1'">
 
 
 
@@ -78,6 +78,105 @@
       <button class="flix-btn flix-btn--danger" style="float: left" (click)="annuler()">Annuler</button>
     </div>
 </div>
+    <div *ngIf="localStorageItem('radio') == '2'">
+
+
+
+
+      <span class="flix-connection__title">{{flixbusService.departureTime1 | date:'mediumDate'}} {{flixbusService.departureTime1|date:"HH:mm"}} - <span class="flix-connection__title-arrival">{{flixbusService.arrivalTime1|date:"HH:mm"}}</span></span><table class="flix-connection">
+
+
+
+
+      <tbody>
+      <tr>
+
+        <td>
+          <div class="flix-connection__station" style=" font-family:Arial, Helvetica, sans-serif; color: #808080;  margin-top: 10px;">
+            {{flixbusService.from1}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+
+        <td>
+          <div class="flix-connection__station" style="font-family:Arial, Helvetica, sans-serif; color: #808080;  ">
+            {{flixbusService.to1}}
+          </div>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+      <hr>
+
+      <span class="flix-connection__title">{{flixbusService.departureTime2 | date:'mediumDate'}} {{flixbusService.departureTime2|date:"HH:mm"}} - <span class="flix-connection__title-arrival">{{flixbusService.arrivalTime2|date:"HH:mm"}}</span></span><table class="flix-connection">
+
+
+
+
+      <tbody>
+      <tr>
+
+        <td>
+          <div class="flix-connection__station" style=" font-family:Arial, Helvetica, sans-serif; color: #808080;  margin-top: 10px;">
+            {{flixbusService.from2}}
+          </div>
+        </td>
+      </tr>
+      <tr>
+
+        <td>
+          <div class="flix-connection__station" style="font-family:Arial, Helvetica, sans-serif; color: #808080;  ">
+            {{flixbusService.to2}}
+          </div>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+      <div class="flix-cart-trip flix-cart-section">
+
+        <div class="flix-cart-items-container-with-price flix-connection__title">
+          <div class="flix-cart-item">
+                  <span>
+                    <span  *ngIf="num(localStorageItem('adult')) > 0">{{localStorageItem("adult")}} Adulte</span>
+                    <span  *ngIf="num(localStorageItem('children')) > 0">, {{localStorageItem("children")}} Enfant</span>
+                  </span>
+          </div>
+          <div class="flix-cart-item-price">
+            <span *ngIf="num(localStorageItem('bikes')) > 0" class="flix-price">{{flixbusService.total-(9*num(localStorageItem('bikes'))) | number}}&nbsp;€</span>
+            <span *ngIf="num(localStorageItem('bikes')) == 0" class="flix-price">{{flixbusService.total | number}}&nbsp;€</span>
+
+          </div>
+        </div>
+        <div *ngIf="num(localStorageItem('bikes')) > 0 " class="flix-cart-items-container-with-price flix-connection__title">
+          <div class="flix-cart-item">
+                  <span>
+                    <span>{{localStorageItem('bikes')}} Emplacement pour vélo</span>
+
+                  </span>
+          </div>
+          <div class="flix-cart-item-price">
+            <span  class="flix-price">{{9*num(localStorageItem('bikes')) | number}}&nbsp;€</span>
+
+
+          </div>
+        </div>
+      </div>
+      <!--<hr>-->
+      <div class="flix-connection__title" class="total">
+        <div><b>Total</b> (TTC)</div>
+        <span style="float: right">{{flixbusService.total}}&nbsp;€</span>
+      </div>
+      <div class="flix-control" style="margin-top: 20px">
+
+        <button class="flix-btn flix-btn--secondary" style="float: right" (click)="reserver()" >Réserver
+        </button>
+
+        <button class="flix-btn flix-btn--danger" style="float: left" (click)="annuler()">Annuler</button>
+      </div>
+    </div>
   </div>
     <div [hidden]="show">
       <mat-toolbar class="example-toolbar">

@@ -318,7 +318,7 @@
             <div class="flix-grid"><h2 class="flix-h2 flix-col">Votre commande</h2>
 
             </div>
-            <div class="flix-cart-trip flix-cart-section">
+            <div *ngIf="localStorageItem('radio') == '1'" class="flix-cart-trip flix-cart-section">
               <table class="flix-connection">
                 <caption class="flix-connection__title"><span
                   class="flix-connection__title-departure">{{flixbusService.departureTime | date:'mediumDate'}}</span>
@@ -334,6 +334,73 @@
                   <div class="flix-connection__time">{{flixbusService.arrivalTime|date:"HH:mm"}}</div>
                   <td>
                     <div class="flix-connection__station">{{flixbusService.to}}</div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="flix-cart-items-container-with-price flix-connection__title">
+                <div class="flix-cart-item">
+                  <span>
+                    <span  *ngIf="num(localStorageItem('adult')) > 0">{{localStorageItem("adult")}} Adulte</span>
+                    <span  *ngIf="num(localStorageItem('children')) > 0">, {{localStorageItem("children")}} Enfant</span>
+                  </span>
+                </div>
+                <div class="flix-cart-item-price">
+                  <span *ngIf="num(localStorageItem('bikes')) > 0" class="flix-price">{{flixbusService.total-(9*num(localStorageItem('bikes'))) | number}}&nbsp;€</span>
+                  <span *ngIf="num(localStorageItem('bikes')) == 0" class="flix-price">{{flixbusService.total | number}}&nbsp;€</span>
+
+                </div>
+              </div>
+              <div *ngIf="num(localStorageItem('bikes')) > 0 " class="flix-cart-items-container-with-price flix-connection__title">
+                <div class="flix-cart-item">
+                  <span>
+                    <span>{{localStorageItem('bikes')}} Emplacement pour vélo</span>
+
+                  </span>
+                </div>
+                <div class="flix-cart-item-price">
+                  <span  class="flix-price">{{9*num(localStorageItem('bikes')) | number}}&nbsp;€</span>
+
+
+                </div>
+              </div>
+            </div>
+            <div *ngIf="localStorageItem('radio') == '2'" class="flix-cart-trip flix-cart-section">
+              <table class="flix-connection">
+                <caption class="flix-connection__title"><span
+                  class="flix-connection__title-departure">{{flixbusService.departureTime1 | date:'mediumDate'}}</span>
+                </caption>
+                <tbody>
+                <tr>
+                  <div class="flix-connection__time">{{flixbusService.departureTime1|date:"HH:mm"}}</div>
+                  <td>
+                    <div class="flix-connection__station">{{flixbusService.from1}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <div class="flix-connection__time">{{flixbusService.arrivalTime1|date:"HH:mm"}}</div>
+                  <td>
+                    <div class="flix-connection__station">{{flixbusService.to1}}</div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <hr>
+              <table class="flix-connection">
+                <caption class="flix-connection__title"><span
+                  class="flix-connection__title-departure">{{flixbusService.departureTime2 | date:'mediumDate'}}</span>
+                </caption>
+                <tbody>
+                <tr>
+                  <div class="flix-connection__time">{{flixbusService.departureTime2|date:"HH:mm"}}</div>
+                  <td>
+                    <div class="flix-connection__station">{{flixbusService.from2}}</div>
+                  </td>
+                </tr>
+                <tr>
+                  <div class="flix-connection__time">{{flixbusService.arrivalTime2|date:"HH:mm"}}</div>
+                  <td>
+                    <div class="flix-connection__station">{{flixbusService.to2}}</div>
                   </td>
                 </tr>
                 </tbody>
