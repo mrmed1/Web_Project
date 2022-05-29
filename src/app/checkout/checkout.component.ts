@@ -5,6 +5,7 @@ import {stringify} from "@angular/compiler/src/util";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ModalPaiementComponent} from "../modal-paiement/modal-paiement.component";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -42,7 +43,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(public flixbusService:FlixbusService,
               private fb:FormBuilder,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private router: Router) { }
 
 
 
@@ -275,5 +277,9 @@ export class CheckoutComponent implements OnInit {
 
       }
     );
+  }
+
+  tohome() {
+    this.router.navigateByUrl("");
   }
 }
