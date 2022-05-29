@@ -24,6 +24,8 @@ registerLocaleData(localeFr, 'fr');
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ListVoyageComponent } from './list-voyage/list-voyage.component';
+import { HeaderComponent } from './header/header.component';
+import { ModalGetTicketComponent } from './modal-get-ticket/modal-get-ticket.component';
 @NgModule({
   declarations: [
 
@@ -31,7 +33,9 @@ import { ListVoyageComponent } from './list-voyage/list-voyage.component';
     AppComponent,
     CheckoutComponent,
     ModalPaiementComponent,
-    ListVoyageComponent
+    ListVoyageComponent,
+    HeaderComponent,
+    ModalGetTicketComponent
   ],
   imports: [
 

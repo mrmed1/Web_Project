@@ -5,6 +5,7 @@ import {stringify} from "@angular/compiler/src/util";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ModalPaiementComponent} from "../modal-paiement/modal-paiement.component";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -42,7 +43,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(public flixbusService:FlixbusService,
               private fb:FormBuilder,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private router: Router) { }
 
 
 
@@ -66,11 +68,16 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if(localStorage.getItem("radio") == "2")
+    {
+      this.flixbusService.createReservation(String(localStorage.getItem("uid1")),String(localStorage.getItem("uid2")),this.num(localStorage.getItem("children")),this.num(localStorage.getItem("bikes")),this.num(localStorage.getItem("adult")));
+    }else
+    {
+      this.flixbusService.createReservation(String(localStorage.getItem("uid")),null,this.num(localStorage.getItem("children")),this.num(localStorage.getItem("bikes")),this.num(localStorage.getItem("adult")));
 
+    }
 
-   this.flixbusService.createReservation(String(localStorage.getItem("uid")),String(localStorage.getItem("uid1")),this.num(localStorage.getItem("children")),this.num(localStorage.getItem("bikes")),this.num(localStorage.getItem("adult")));
-
-    this.flixbusService.getancillary();
+   // this.flixbusService.getancillary();
     console.log("passengers: ", this.flixbusService.tabpassenger)
 
 
@@ -110,8 +117,23 @@ export class CheckoutComponent implements OnInit {
    // this.spinner.show();
     let i;
     let x = [];
+    let x2 = [];
   console.log("onsubmit")
+  if(localStorage.getItem("radio") == "1")
+  {     if (this.num(localStorage.getItem("adult")) > 0) {
+    console.log("onsubmit a1")
+    for (i = 1; i <= this.num(localStorage.getItem("adult")); i++) {
 
+      x.push({
+        "firstname": document.getElementById("prenom" + i)["value"],
+        "lastname": document.getElementById("nom" + i)["value"],
+        "phone": document.getElementById("tel")["value"],
+        "type" : this.flixbusService.tabpassenger[i-1]["passenger"]["type"],
+        "reference_id" : this.flixbusService.tabpassenger[i-1]["passenger"]["reference_id"],
+      })
+    }
+
+  }
     if(this.num(localStorage.getItem("adult")) > 0 && this.num(localStorage.getItem("children")) > 0){
       console.log("onsubmit c1 a1")
       for (let j = i; j <= (i-1) + this.num(localStorage.getItem("children")); j++) {
@@ -124,30 +146,41 @@ export class CheckoutComponent implements OnInit {
           "reference_id" : this.flixbusService.tabpassenger[j-1]["passenger"]["reference_id"],
         })
       }
-      //this.flixbusService.addpassengertoreservation(x);
-    this.flixbusService.addpassengertoreservation(x).subscribe(
-        (data:any) => {
-          console.log(data.body);
-            localStorage.setItem("email",document.getElementById("email")["value"]);
-           // this.spinner.hide();
-            this.openDialog();
-        },
-        error => console.log(error)
-      )
+      //this.flixbusService.addpassengertoreservation(x); console.log(x)
+
     }
-    else if (this.num(localStorage.getItem("adult")) > 0) {
-      console.log("onsubmit a1")
+    this.flixbusService.addpassengertab(x).subscribe(
+      (data:any) => {
+        console.log(data.body);
+        localStorage.setItem("email",document.getElementById("email")["value"]);
+        // this.spinner.hide();
+        this.openDialog();
+      },
+      error => console.log(error)
+    )
+  }
+  else {
+    if (this.num(localStorage.getItem("adult")) > 0) {
+
       for (i = 1; i <= this.num(localStorage.getItem("adult")); i++) {
 
         x.push({
           "firstname": document.getElementById("prenom" + i)["value"],
           "lastname": document.getElementById("nom" + i)["value"],
           "phone": document.getElementById("tel")["value"],
-          "type" : this.flixbusService.tabpassenger[i-1]["passenger"]["type"],
-          "reference_id" : this.flixbusService.tabpassenger[i-1]["passenger"]["reference_id"],
+          "type": this.flixbusService.tabpassenger[i - 1]["passenger"]["type"],
+          "reference_id": this.flixbusService.tabpassenger[i - 1]["passenger"]["reference_id"],
+        });
+        x2.push({
+          "firstname": document.getElementById("prenom" + i)["value"],
+          "lastname": document.getElementById("nom" + i)["value"],
+          "phone": document.getElementById("tel")["value"],
+          "type": this.flixbusService.tabpassenger2[i - 1]["passenger"]["type"],
+          "reference_id": this.flixbusService.tabpassenger2[i - 1]["passenger"]["reference_id"],
         })
       }
-      this.flixbusService.addpassengertoreservation(x).subscribe(
+
+      /*this.flixbusService.addpassengertab1(x).subscribe(
         (data:any) => {
           console.log(data.body);
           localStorage.setItem("email",document.getElementById("email")["value"]);
@@ -156,7 +189,78 @@ export class CheckoutComponent implements OnInit {
         },
         error => console.log(error)
       )
+      this.flixbusService.addpassengertab2(x2).subscribe(
+        (data:any) => {
+          console.log(data.body);
+          localStorage.setItem("email",document.getElementById("email")["value"]);
+          // this.spinner.hide();
+          this.openDialog();
+        },
+        error => console.log(error)
+      )*/
     }
+    if(this.num(localStorage.getItem("adult")) > 0 && this.num(localStorage.getItem("children")) > 0){
+
+      for (let j = i; j <= (i-1) + this.num(localStorage.getItem("children")); j++) {
+        x.push({
+          "firstname": document.getElementById("prenom" + j)["value"],
+          "lastname": document.getElementById("nom" + j)["value"],
+          "phone": document.getElementById("tel")["value"],
+          "birthdate": document.getElementById("datenaissance" + j)["value"].replaceAll("/","."),
+          "type" : this.flixbusService.tabpassenger[j-1]["passenger"]["type"],
+          "reference_id" : this.flixbusService.tabpassenger[j-1]["passenger"]["reference_id"],
+        });
+        x2.push({
+          "firstname": document.getElementById("prenom" + j)["value"],
+          "lastname": document.getElementById("nom" + j)["value"],
+          "phone": document.getElementById("tel")["value"],
+          "birthdate": document.getElementById("datenaissance" + j)["value"].replaceAll("/","."),
+          "type" : this.flixbusService.tabpassenger2[j-1]["passenger"]["type"],
+          "reference_id" : this.flixbusService.tabpassenger2[j-1]["passenger"]["reference_id"],
+        })
+      }
+/*      this.flixbusService.addpassengertab1(x).subscribe(
+        (data:any) => {
+          console.log(data.body);
+          localStorage.setItem("email",document.getElementById("email")["value"]);
+          // this.spinner.hide();
+          this.openDialog();
+        },
+        error => console.log(error)
+      )
+      this.flixbusService.addpassengertab2(x2).subscribe(
+        (data:any) => {
+          console.log(data.body);
+          localStorage.setItem("email",document.getElementById("email")["value"]);
+          // this.spinner.hide();
+          this.openDialog();
+        },
+        error => console.log(error)
+      )*/
+
+    }
+    this.flixbusService.addpassengertab1(x).subscribe(
+      (data:any) => {
+        console.log(data.body);
+        localStorage.setItem("email",document.getElementById("email")["value"]);
+        // this.spinner.hide();
+        this.openDialog();
+      },
+      error => console.log(error)
+    )
+    this.flixbusService.addpassengertab2(x2).subscribe(
+      (data:any) => {
+        console.log(data.body);
+        localStorage.setItem("email",document.getElementById("email")["value"]);
+        // this.spinner.hide();
+        this.openDialog();
+      },
+      error => console.log(error)
+    )
+
+  }
+
+
   }
 
   openDialog()
@@ -173,5 +277,9 @@ export class CheckoutComponent implements OnInit {
 
       }
     );
+  }
+
+  tohome() {
+    this.router.navigateByUrl("");
   }
 }
