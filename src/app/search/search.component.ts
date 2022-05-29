@@ -238,13 +238,14 @@ export class SearchComponent implements OnInit {
 
       console.log("statu",localStorage.getItem("statu"))
       if(localStorage.getItem("statu")=="Back")
-      {
+      { console.log("e9leb")
         this.Depart.setValue(localStorage.getItem("destination"))
         this.Destination.setValue(localStorage.getItem("depart"))
 
 
       }else
-      {  this.Depart.setValue(localStorage.getItem("depart"))
+      {
+        this.Depart.setValue(localStorage.getItem("depart"))
         this.Destination.setValue(localStorage.getItem("destination"))
       }
 
@@ -252,8 +253,7 @@ export class SearchComponent implements OnInit {
 
       this.dispimg = true
       this.classimg = "imglist"
-      this.Depart.setValue(localStorage.getItem("depart"))
-      this.Destination.setValue(localStorage.getItem("destination"))
+
       this.Adult.setValue(Number(localStorage.getItem("adult")))
       this.Children.setValue(Number(localStorage.getItem("children")))
       this.Bikes.setValue(Number(localStorage.getItem("bikes")))

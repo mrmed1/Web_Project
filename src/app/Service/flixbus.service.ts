@@ -27,6 +27,7 @@ export class FlixbusService {
 
   total = 0;
   token: string
+  trip :any;
 
   constructor(private http: HttpClient) {
     this.urlv1 = "https://global.api-dev.flixbus.com/public/v1";
@@ -569,8 +570,9 @@ export class FlixbusService {
         (data: any) => {
           if (data.status == 200) {
             localStorage.setItem("download_hash", data.body.download_hash)
-            localStorage.setItem("order_id", data.body.order_id)
-            setTimeout(() => this.getTicket(), 1500)
+            localStorage.setItem("order_id", data.body.order_id);
+            this.getTicket()
+
           }
 
 
@@ -603,13 +605,27 @@ export class FlixbusService {
     console.log(localStorage.getItem("order_id"))
     console.log(this.urlv2 + "/orders/" + localStorage.getItem("order_id") + "/info.json?download_hash=" + localStorage.getItem('download_hash'))
 
-      return this.http.get(this.urlv2 + "/orders/" + localStorage.getItem("order_id") + "/info.json?download_hash=" + localStorage.getItem('download_hash'), {
-        observe: 'response',
-        headers: new HttpHeaders()
-          .set('Content-Type', 'application/x-www-form-urlencoded')
-          .set('Access-Control-Allow-Origin', '*')
-          .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
-      })
+
+       return this.http.get(this.urlv2 + "/orders/" + localStorage.getItem("order_id") + "/info.json?download_hash=" + localStorage.getItem('download_hash'), {
+       headers: new HttpHeaders()
+         .set('Content-Type', 'application/x-www-form-urlencoded')
+         .set('Access-Control-Allow-Origin', '*')
+         .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
+     })
     }
+
+
+
+  getTrip(uid)
+  {
+    return this.http.get(this.urlv1 +"/trips/"+uid+"/info.json",{
+      observe: 'response',
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Access-Control-Allow-Origin', '*')
+        .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
+    })
+
+  }
 
 }
