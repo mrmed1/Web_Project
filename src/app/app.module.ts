@@ -14,10 +14,13 @@ import {MatButtonModule} from "@angular/material/button";
 import { ModalPaiementComponent } from './modal-paiement/modal-paiement.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { SearchComponent } from './search/search.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+
+
+
 registerLocaleData(localeFr, 'fr');
 
 
@@ -47,6 +50,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserModule,
+    MatSidenavModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
