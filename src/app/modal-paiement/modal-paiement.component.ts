@@ -135,6 +135,7 @@ export class ModalPaiementComponent implements OnInit {
       data => {
         console.log(data)
       })
+    localStorage.clear();
     this.dialogRef.close();
     this.router.navigateByUrl("");
 
