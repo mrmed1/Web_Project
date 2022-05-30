@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -24,12 +25,14 @@ export class FlixbusService {
   to2 = "";
   departureTime2: number | undefined;
   arrivalTime2: number | undefined;
-
+   order = new BehaviorSubject("");
+  hash = new BehaviorSubject("");
   total = 0;
   token: string
-  trip :any;
+  trip: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private store: AngularFirestore) {
     this.urlv1 = "https://global.api-dev.flixbus.com/public/v1";
     this.urlv2 = "https://global.api-dev.flixbus.com/public/v2";
     this.token = localStorage.getItem('token')
@@ -70,7 +73,7 @@ export class FlixbusService {
         .set('adult', adult)
         .set('currency', "EUR")
 
-       this.http.put(this.urlv1 + '/reservation/items.json',
+      this.http.put(this.urlv1 + '/reservation/items.json',
         body1.toString(),
         {
           observe: 'response',
@@ -83,6 +86,7 @@ export class FlixbusService {
       ).subscribe(
         (data: any) => {
           if (data.status == 200) {
+
             localStorage.setItem('reservation_token1', data.body.cart.reservation.token)
             localStorage.setItem('id_reservation1', data.body.cart.reservation.id)
             this.arrivalTime1 = (data.body.cart.items[uid1].arrival.timestamp) * 1000;
@@ -160,7 +164,7 @@ export class FlixbusService {
             this.from = data.body.cart.items[uid1].from.name;
             this.to = data.body.cart.items[uid1].to.name;
             this.total += data.body.cart.price.total;
-             this.getpassengerDetails();
+            this.getpassengerDetails();
           }
 
 
@@ -176,7 +180,7 @@ export class FlixbusService {
     let token = localStorage.getItem('token')
     this.tabancillary.pop();
     if (Number(localStorage.getItem("radio")) == 2) {
-       this.http.get(this.urlv2 + '/reservations/' + localStorage.getItem('id_reservation1') + '/ancillaries?reservation_token=' + localStorage.getItem('reservation_token1'),
+      this.http.get(this.urlv2 + '/reservations/' + localStorage.getItem('id_reservation1') + '/ancillaries?reservation_token=' + localStorage.getItem('reservation_token1'),
 
         {
 
@@ -197,7 +201,7 @@ export class FlixbusService {
         },
         error => console.log(error)
       );
-       this.http.get(this.urlv2 + '/reservations/' + localStorage.getItem('id_reservation2') + '/ancillaries?reservation_token=' + localStorage.getItem('reservation_token2'),
+      this.http.get(this.urlv2 + '/reservations/' + localStorage.getItem('id_reservation2') + '/ancillaries?reservation_token=' + localStorage.getItem('reservation_token2'),
 
         {
 
@@ -218,8 +222,7 @@ export class FlixbusService {
         },
         error => console.log(error)
       );
-    }
-    else {
+    } else {
       if (Number(localStorage.getItem("radio")) == 2) {
         this.http.get(this.urlv2 + '/reservations/' + localStorage.getItem('id_reservation') + '/ancillaries?reservation_token=' + localStorage.getItem('reservation_token'),
 
@@ -252,7 +255,7 @@ export class FlixbusService {
     this.tabpassenger.pop();
     this.tabpassenger2.pop();
     if (Number(localStorage.getItem("radio")) == 2) {
-       this.http.get(this.urlv1 + "/reservations/" + localStorage.getItem('id_reservation1') + '/passengers.json?reservation_token=' + localStorage.getItem('reservation_token1'),
+      this.http.get(this.urlv1 + "/reservations/" + localStorage.getItem('id_reservation1') + '/passengers.json?reservation_token=' + localStorage.getItem('reservation_token1'),
         {
 
           headers: new HttpHeaders()
@@ -289,14 +292,14 @@ export class FlixbusService {
 
             })
           })
-     //     console.log(this.tabpassenger)
+          //     console.log(this.tabpassenger)
           // console.log(data["trips"][0]["passengers"]);
 
 
         },
         error => console.log(error)
       );
-    }else {
+    } else {
       this.http.get(this.urlv1 + "/reservations/" + localStorage.getItem('id_reservation') + '/passengers.json?reservation_token=' + localStorage.getItem('reservation_token'),
         {
 
@@ -363,8 +366,7 @@ export class FlixbusService {
     }
 
   }*/
-  addpassengertab1(tab1)
-  {
+  addpassengertab1(tab1) {
     return this.http.put(this.urlv1 + '/reservations/' + localStorage.getItem("id_reservation1") + '/passengers.json',
       {
         'reservation_token': localStorage.getItem("reservation_token1"),
@@ -381,8 +383,8 @@ export class FlixbusService {
       }
     )
   }
-  addpassengertab2(tab2)
-  {
+
+  addpassengertab2(tab2) {
     return this.http.put(this.urlv1 + '/reservations/' + localStorage.getItem("id_reservation2") + '/passengers.json',
       {
         'reservation_token': localStorage.getItem("reservation_token2"),
@@ -399,9 +401,9 @@ export class FlixbusService {
       }
     )
   }
-  addpassengertab(tab)
-  {
-   return this.http.put(this.urlv1 + '/reservations/' + localStorage.getItem("id_reservation") + '/passengers.json',
+
+  addpassengertab(tab) {
+    return this.http.put(this.urlv1 + '/reservations/' + localStorage.getItem("id_reservation") + '/passengers.json',
       {
         'reservation_token': localStorage.getItem("reservation_token"),
         'passengers': tab
@@ -428,7 +430,7 @@ export class FlixbusService {
         .set('payment[method]', "cash")
 
       console.log(body1.toString())
-       this.http.post(this.urlv1 + "/payment/start.json", body1.toString(), {
+      this.http.post(this.urlv1 + "/payment/start.json", body1.toString(), {
         observe: 'response',
         headers: new HttpHeaders()
           .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -439,7 +441,7 @@ export class FlixbusService {
         (data: any) => {
           if (data.status == 200) {
             localStorage.setItem("payment_id1", data.body.payment_id)
-/*            setTimeout(() => this.finalyzepaiement(), 1500)*/
+            /*            setTimeout(() => this.finalyzepaiement(), 1500)*/
 
 
           }
@@ -454,7 +456,7 @@ export class FlixbusService {
         .set('payment[method]', "cash")
 
 
-       this.http.post(this.urlv1 + "/payment/start.json", body2.toString(), {
+      this.http.post(this.urlv1 + "/payment/start.json", body2.toString(), {
         observe: 'response',
         headers: new HttpHeaders()
           .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -472,8 +474,7 @@ export class FlixbusService {
 
         }
       )
-    }
-    else {
+    } else {
       const body1 = new HttpParams()
         .set('reservation', localStorage.getItem("id_reservation"))
         .set('reservation_token', localStorage.getItem("reservation_token"))
@@ -482,7 +483,7 @@ export class FlixbusService {
         .set('payment[method]', "cash")
 
 
-       this.http.post(this.urlv1 + "/payment/start.json", body1.toString(), {
+      this.http.post(this.urlv1 + "/payment/start.json", body1.toString(), {
         observe: 'response',
         headers: new HttpHeaders()
           .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -512,7 +513,7 @@ export class FlixbusService {
         .set('reservation_token', localStorage.getItem("reservation_token1"))
         .set('payment_id', localStorage.getItem("payment_id1"))
 
-       this.http.put(this.urlv1 + "/payment/commit.json", body1.toString(), {
+      this.http.put(this.urlv1 + "/payment/commit.json", body1.toString(), {
         observe: 'response',
         headers: new HttpHeaders()
           .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -522,9 +523,14 @@ export class FlixbusService {
       }).subscribe(
         (data: any) => {
           if (data.status == 200) {
+            this.store.collection('Data').doc('eOsG51z63gg3zmL9zp8W').update({download_hash1: data.body.download_hash,order_id1: data.body.order_id}).then(
+              data => {
+                console.log(data)
+              })
+
             localStorage.setItem("download_hash1", data.body.download_hash)
             localStorage.setItem("order_id1", data.body.order_id)
-           setTimeout(() => this.getTicket1(), 1500)
+            setTimeout(() => this.getTicket1(data.body.download_hash,data.body.order_id), 1500)
           }
 
 
@@ -535,7 +541,7 @@ export class FlixbusService {
         .set('reservation_token', localStorage.getItem("reservation_token2"))
         .set('payment_id', localStorage.getItem("payment_id2"))
 
-       this.http.put(this.urlv1 + "/payment/commit.json", body2.toString(), {
+      this.http.put(this.urlv1 + "/payment/commit.json", body2.toString(), {
         observe: 'response',
         headers: new HttpHeaders()
           .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -545,21 +551,29 @@ export class FlixbusService {
       }).subscribe(
         (data: any) => {
           if (data.status == 200) {
+            this.store.collection('Data').doc('eOsG51z63gg3zmL9zp8W').update({download_hash2: data.body.download_hash}).then(
+              data => {
+                console.log(data)
+              })
+            this.store.collection('Data').doc('eOsG51z63gg3zmL9zp8W').update({order_id2: data.body.order_id}).then(
+              data => {
+                console.log(data)
+              })
             localStorage.setItem("download_hash2", data.body.download_hash)
             localStorage.setItem("order_id2", data.body.order_id)
-            setTimeout(() => this.getTicket2(), 1500)
+            setTimeout(() => this.getTicket2(data.body.download_hash,data.body.order_id), 1500)
           }
 
 
         }, error => console.log(error)
       )
-    }else {
+    } else {
       const body2 = new HttpParams()
         .set('reservation', localStorage.getItem("id_reservation"))
         .set('reservation_token', localStorage.getItem("reservation_token"))
         .set('payment_id', localStorage.getItem("payment_id"))
 
-       this.http.put(this.urlv1 + "/payment/commit.json", body2.toString(), {
+      this.http.put(this.urlv1 + "/payment/commit.json", body2.toString(), {
         observe: 'response',
         headers: new HttpHeaders()
           .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -569,9 +583,20 @@ export class FlixbusService {
       }).subscribe(
         (data: any) => {
           if (data.status == 200) {
-            localStorage.setItem("download_hash", data.body.download_hash)
+            this.store.collection('Data').doc('eOsG51z63gg3zmL9zp8W').update({download_hash: data.body.download_hash}).then(
+              data => {
+                console.log(data)
+              })
+            this.store.collection('Data').doc('eOsG51z63gg3zmL9zp8W').update({order_id: data.body.order_id}).then(
+              data => {
+                console.log(data)
+              })
+          localStorage.setItem("download_hash", data.body.download_hash)
             localStorage.setItem("order_id", data.body.order_id);
-            this.getTicket()
+            setTimeout(() => this.getTicket(data.body.download_hash,data.body.order_id), 1500)
+
+
+
 
           }
 
@@ -581,9 +606,9 @@ export class FlixbusService {
     }
 
   }
-  getTicket1()
-  {
-    return this.http.get(this.urlv2 + "/orders/" + localStorage.getItem("order_id1") + "/info.json?download_hash=" + localStorage.getItem('download_hash1'), {
+
+  getTicket1(download,order) {
+    return this.http.get(this.urlv2 + "/orders/" + order + "/info.json?download_hash=" + download, {
       observe: 'response',
       headers: new HttpHeaders()
         .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -591,9 +616,9 @@ export class FlixbusService {
         .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
     })
   }
-  getTicket2()
-  {
-    return this.http.get(this.urlv2 + "/orders/" + localStorage.getItem("order_id2") + "/info.json?download_hash=" + localStorage.getItem('download_hash2'), {
+
+  getTicket2(download,order) {
+    return this.http.get(this.urlv2 + "/orders/" + order + "/info.json?download_hash=" + download, {
       observe: 'response',
       headers: new HttpHeaders()
         .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -601,24 +626,21 @@ export class FlixbusService {
         .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
     })
   }
-  getTicket() {
-    console.log(localStorage.getItem("order_id"))
-    console.log(this.urlv2 + "/orders/" + localStorage.getItem("order_id") + "/info.json?download_hash=" + localStorage.getItem('download_hash'))
+
+  getTicket(download,order) {
 
 
-       return this.http.get(this.urlv2 + "/orders/" + localStorage.getItem("order_id") + "/info.json?download_hash=" + localStorage.getItem('download_hash'), {
-       headers: new HttpHeaders()
-         .set('Content-Type', 'application/x-www-form-urlencoded')
-         .set('Access-Control-Allow-Origin', '*')
-         .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
-     })
-    }
+    return this.http.get(this.urlv2 + "/orders/" + order + "/info.json?download_hash=" + download, {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Access-Control-Allow-Origin', '*')
+        .set('X-API-Authentication', 'DEV_TEST_TOKEN_STAGING')
+    })
+  }
 
 
-
-  getTrip(uid)
-  {
-    return this.http.get(this.urlv1 +"/trips/"+uid+"/info.json",{
+  getTrip(uid) {
+    return this.http.get(this.urlv1 + "/trips/" + uid + "/info.json", {
       observe: 'response',
       headers: new HttpHeaders()
         .set('Content-Type', 'application/x-www-form-urlencoded')

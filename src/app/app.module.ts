@@ -26,6 +26,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ListVoyageComponent } from './list-voyage/list-voyage.component';
 import { HeaderComponent } from './header/header.component';
 import { ModalGetTicketComponent } from './modal-get-ticket/modal-get-ticket.component';
+import {environment} from "../environments/environment";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {AngularFireModule} from "@angular/fire/compat";
+import { NgxSpinnerModule } from "ngx-spinner";
+import {MatSidenavModule} from "@angular/material/sidenav";
 @NgModule({
   declarations: [
 
@@ -38,7 +43,9 @@ import { ModalGetTicketComponent } from './modal-get-ticket/modal-get-ticket.com
     ModalGetTicketComponent
   ],
   imports: [
-
+    NgxSpinnerModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -57,10 +64,9 @@ import { ModalGetTicketComponent } from './modal-get-ticket/modal-get-ticket.com
     MatNativeDateModule,
 
 
-
-
     MatAutocompleteModule,
-    MatOptionModule
+    MatOptionModule,
+    MatSidenavModule
 
 
   ],
