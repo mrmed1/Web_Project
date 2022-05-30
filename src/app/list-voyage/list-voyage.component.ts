@@ -28,6 +28,7 @@ export class ListVoyageComponent implements OnInit {
     constructor(public flixbusService:FlixbusService,private searchService: SearchService,private router : Router) { }
 
   ngOnInit(): void {
+
     localStorage.setItem("uid","0")
     if (localStorage.getItem("statu") == "Back")
     {
@@ -70,6 +71,7 @@ export class ListVoyageComponent implements OnInit {
     }
 
   this.voyage=this.list['trips'][0];
+
    /* console.log('resultttttttttttt')
 
 
@@ -140,7 +142,7 @@ export class ListVoyageComponent implements OnInit {
   }
   sortDepart()
   {
-    console.log(this.list['trips'][0]['items'].sort((a, b) => a.departure[0]  - b.departure[0]));
+    console.log(this.list['trips'][0]['items'].sort((a, b) => a.departure['timestamp']  - b.departure['timestamp']));
 
     this.voyage=this.list['trips'][0];
   }

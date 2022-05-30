@@ -402,15 +402,22 @@ export class SearchComponent implements OnInit {
     let dateValue;
     date = this.formGroup.get('dateFrom').value;
     date.day;
+    let day="x"
+    if ((date.getDate()) < 10) {
+      day = "0" + (date.getDate());
 
+    } else
+    { day = (date.getDate());}
 
     let month = "x";
     if ((date.getMonth() + 1) < 10) {
       month = "0" + (date.getMonth() + 1);
 
     } else
-      month = (date.getMonth() + 1)
-    dateValue = date.getDate() + '.' + month + '.' + date.getFullYear()
+    {month = (date.getMonth() + 1)}
+    console.log(month)
+    dateValue = day + '.' + month + '.' + date.getFullYear()
+    console.log("dattteee",dateValue)
     return dateValue;
   }
 }

@@ -33,7 +33,7 @@ import {environment} from "../environments/environment";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {AngularFireModule} from "@angular/fire/compat";
 import { NgxSpinnerModule } from "ngx-spinner";
-import {MatSidenavModule} from "@angular/material/sidenav";
+
 @NgModule({
   declarations: [
 
