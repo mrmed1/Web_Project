@@ -66,7 +66,9 @@ export class ListVoyageComponent implements OnInit {
 
 
   }
-
+  public localStorageItem(id: string): string {
+    return <string>localStorage.getItem(id);
+  }
   tocheckout(uid,price) {
 
     if(localStorage.getItem("radio")=="1")
