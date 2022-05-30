@@ -320,7 +320,16 @@ export class SearchComponent implements OnInit {
         localStorage.setItem('depart', this.Depart.value);
         localStorage.setItem('destination', this.Destination.value)
         localStorage.setItem('datefrom', this.dateFrom.value)
+        localStorage.setItem('toDate', this.Todate.value)
         localStorage.setItem('radio', this.type)
+        for(var i=1;i<(data['trips'].length);i++) {
+         for(var j=0;j<(data['trips'][i]['items'].length);j++) {
+          data['trips'][0]['items'].push(data['trips'][i]['items'][j])
+
+          }
+
+        }
+
         localStorage.setItem("data", JSON.stringify(data));
         console.log(data)
         if(this.type=="2")
@@ -330,9 +339,14 @@ export class SearchComponent implements OnInit {
         if (this.router.url == "/list")
         window.location.reload();
         else
-        this.router.navigate(['/list'], {state: data});
+        {
 
-        console.log(data);
+
+          this.router.navigate(['/list'], {state: data});
+        }
+
+
+        console.log("dattaaaaa",data);
       },
       (error) => console.log(error)
     );

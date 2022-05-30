@@ -1,3 +1,5 @@
+
+
 <app-search></app-search>
 <div class="flix-box" [hidden]="voyage2"
      style="width: 820px;position: relative;margin: 0 auto;height: 120px;  margin-top: 15px">
@@ -66,6 +68,10 @@
 
 </div>
 <div id="router">
+
+
+
+
   <div class="flix-theme-default ThemeSwitcher__wrap___DgLPS ThemeSwitcher__fullHeight___q8pfj">
     <div class="hcr-theme-default">
       <div
@@ -82,9 +88,9 @@
                   </div>
                 </div>
                 <div class="ResultsList__meansOfTransportContainer___BP89Z"></div>
-                <div *ngFor="let voyage of list['trips']">
+                <div >
 
-                  <div *ngFor="let trip of voyage['items']"> {{trip.uid}}
+                  <div *ngFor="let trip of voyage['items'] "> {{trip.uid}}
 
                     <div class="SearchResult__searchResult___cgxzZ" data-e2e="search_result_restricted_item"
                          data-uuid="direct:21ac3507-9513-4acc-b5ca-3b52acbe6340:dcc5426b-9603-11e6-9066-549f350fcb0c:dcc0aca2-9603-11e6-9066-549f350fcb0c"
@@ -507,7 +513,7 @@
       </div>
     </div>
   </div>
-</div>
 
+</div>
 
 
